@@ -22,7 +22,7 @@ orange_detected = False
 
 line_count = 0
 
-CLOCKWISE = False
+CLOCKWISE = None
 
 
 # ============================================================
