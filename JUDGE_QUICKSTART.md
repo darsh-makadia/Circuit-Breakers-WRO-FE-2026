@@ -1,7 +1,5 @@
 # Judge quick start
 
-If a judge has five minutes, show these things in this order.
-
 ## 1. Final robot
 
 Open the front/rear/side/top views in [`v-photos/`](./v-photos/).
