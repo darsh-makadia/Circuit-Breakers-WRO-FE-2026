@@ -28,9 +28,3 @@ This folder contains navigation guides for the files that actually exist in this
 | CAD/STL + previews | `models/` |
 | Robot/team photos | `v-photos/` |
 | Electrical schematic | `schemes/schematic.png` |
-
-## Important
-
-There is currently no engineering-document PDF in the repository. This guide intentionally does **not** link to a nonexistent PDF.
-
-The repository source files are authoritative. If a guide and source file disagree, inspect the actual source and schematic before changing the guide.
