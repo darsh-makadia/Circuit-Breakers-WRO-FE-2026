@@ -1,0 +1,5 @@
+# Keep binary evidence/assets out of text diffs.
+*.stl binary
+*.mp4 binary
+*.png binary
+*.pdf binary
