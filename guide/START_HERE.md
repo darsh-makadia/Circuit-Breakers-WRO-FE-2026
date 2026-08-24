@@ -12,6 +12,4 @@
 
 **Judge view:** [Judge quick start](./JUDGE_QUICKSTART.md)
 
-**Full documentation:** [Engineering PDF](./documentation/Team_Currents_Final_Document.pdf)
-
 **All links:** [Documentation Index](./DOCUMENTATION_INDEX.md)
