@@ -8,9 +8,14 @@ We have kept the final robot information, code, CAD, photos, testing files and e
 
 ## Table of Contents
 
+### Main documentation
+
 - [1. Team](#1-team)
 - [2. Final Robot Overview](#2-final-robot-overview)
 - [3. Robot and CAD Visual Reference](#3-robot-and-cad-visual-reference)
+  - [Robot Photos](#robot-photos)
+  - [CAD Models](#cad-models)
+  - [Circuit Schematic](#circuit-schematic)
   - [Final STL Files](#final-stl-files)
 - [4. Final Robot Specifications](#4-final-robot-specifications)
 - [5. Mechanical Design](#5-mechanical-design)
@@ -38,6 +43,33 @@ We have kept the final robot information, code, CAD, photos, testing files and e
 - [20. Evidence Included in This Repository](#20-evidence-included-in-this-repository)
 - [21. Final Nationals Configuration Verification](#21-final-nationals-configuration-verification)
 - [22. Version](#22-version)
+
+### Documentation index
+
+- [Documentation Index](#documentation-index)
+- [Build from zero](./BUILD_FROM_ZERO.md)
+- [Parts checklist](./PARTS_CHECKLIST.md)
+- [Wiring and pin reference](./WIRING_AND_PIN_REFERENCE.md)
+- [Software setup](./SOFTWARE_SETUP.md)
+- [Calibration and testing](./CALIBRATION_AND_TESTING.md)
+- [Judge quick start](./JUDGE_QUICKSTART.md)
+- [Engineering document](./documentation/Team_Currents_Final_Document.pdf)
+- [Testing evidence](./testing/)
+- [Changelog](./CHANGELOG.md)
+- [Suggested Git history](./COMMIT_PLAN.md)
+- [README image manifest](./README_IMAGE_MANIFEST.md)
+- [Repository index](./INDEX.md)
+
+#### Folder guides
+
+- [`code/README.md`](./code/README.md) — source-code map
+- [`cad/README.md`](./cad/README.md) — STL/CAD map
+- [`models/README.md`](./models/README.md) — CAD preview map
+- [`schematics/README.md`](./schematics/README.md) — schematic reference
+- [`photos/README.md`](./photos/README.md) — development photos
+- [`v-photos/README.md`](./v-photos/README.md) — visual reference photos
+- [`testing/README.md`](./testing/README.md) — testing evidence map
+- [`documentation/README.md`](./documentation/README.md) — engineering document map
 
 ---
 
@@ -79,70 +111,69 @@ We did not build the final version in one step. We changed the motor, chassis, c
 
 # 3. Robot and CAD Visual Reference
 
-These are the robot photos and CAD views used in this repository. The vehicle photos are kept in `v-photos/` and the CAD previews are in `models/`.
+These are the robot photos and CAD views used in this repository. The README uses the copies in `assets/` so the images render directly on GitHub. The original photo and model folders are also kept for reference.
 
 ## Robot Photos
 
 ### Front View
 
-<img src="./v-photos/front_view.png" alt="The Dark Knight front view" width="600">
+[![The Dark Knight front view](./assets/robot/front_view.png)](./assets/robot/front_view.png)
 
 ### Back View
 
-<img src="./v-photos/back_view.png" alt="The Dark Knight back view" width="600">
+[![The Dark Knight back view](./assets/robot/back_view.png)](./assets/robot/back_view.png)
 
 ### Side Views
 
-<p align="center">
-  <img src="./v-photos/side_view_1.png" alt="The Dark Knight side view 1" width="45%">
-  <img src="./v-photos/side_view_2.png" alt="The Dark Knight side view 2" width="45%">
-</p>
+[![The Dark Knight left side](./assets/robot/left_side.png)](./assets/robot/left_side.png)
+
+[![The Dark Knight right side](./assets/robot/right_side.png)](./assets/robot/right_side.png)
 
 ### Motor and Steering
 
-<p align="center">
-  <img src="./v-photos/motor_close_up.png" alt="JGB37-520 drive motor" width="45%">
-  <img src="./v-photos/servo_close_up.png" alt="Steering servo" width="45%">
-</p>
+[![JGB37-520 drive motor](./assets/robot/motor.png)](./assets/robot/motor.png)
+
+[![Steering servo](./assets/robot/servo.png)](./assets/robot/servo.png)
 
 ### Differential and Electronics
 
-<p align="center">
-  <img src="./v-photos/differential.png" alt="Mechanical LEGO differential" width="45%">
-  <img src="./v-photos/circuit_case_and_battery.png" alt="Electronics and battery" width="45%">
-</p>
+[![Mechanical LEGO differential](./assets/robot/differential.png)](./assets/robot/differential.png)
 
+[![Electronics and battery](./assets/robot/power.png)](./assets/robot/power.png)
 ### Electronics From Above
 
 <p align="center">
-  <img src="./v-photos/circuit_from_top.png" alt="Electronics from above" width="700">
-</p>
+  [![Electronics from above](./assets/robot/top_electronics.png)](./assets/robot/top_electronics.png)
 
 ## CAD Models
 
 ### Final Chassis
 
-<img src="./models/chassis.png" alt="Final CAD chassis" width="700">
+[![Final CAD chassis](./assets/cad/chassis.png)](./assets/cad/chassis.png)
+
+### Final Chassis — Part 2
+
+[![Final chassis part 2 CAD reference](./assets/cad/chassis_part2_reference.png)](./assets/cad/chassis_part2_reference.png)
 
 ### Circuit Box
 
-<img src="./models/circuit_box.png" alt="Circuit box CAD" width="700">
+[![Circuit box CAD](./assets/cad/circuit_box.png)](./assets/cad/circuit_box.png)
 
 ### Circuit Box Lid
 
-<img src="./models/circuit_box_lid.png" alt="Circuit box lid CAD" width="700">
+[![Circuit box lid CAD](./assets/cad/circuit_box_lid.png)](./assets/cad/circuit_box_lid.png)
 
 ### Camera Mount
 
-<img src="./models/camera_mount.png" alt="Camera mount CAD" width="700">
+[![Camera mount CAD](./assets/cad/camera_mount.png)](./assets/cad/camera_mount.png)
 
 ### Camera Case
 
-<img src="./models/camera_case.png" alt="Camera case CAD" width="600">
+[![Camera case CAD](./assets/cad/camera_case.png)](./assets/cad/camera_case.png)
 
 ## Circuit Schematic
 
-<img src="./schemes/schematic.png" alt="Final circuit schematic" width="1000">
+[![Final circuit schematic](./assets/schematic/schematic.png)](./assets/schematic/schematic.png)
 
 ## Final STL Files
 
@@ -151,7 +182,7 @@ The final STL exports are in [`cad/`](./cad/). These are the actual STL files su
 | Model | STL file | Purpose |
 |---|---|---|
 | Final chassis | [`final_chassis.stl`](./cad/final_chassis.stl) | Main custom chassis |
-| Final chassis — Part 2 | [`final_chassis_part2.stl`](./cad/final_chassis_part2.stl) | Additional chassis component |
+| Final chassis — Part 2 | [`Final chassis — Part 2.stl`](./cad/Final chassis — Part 2.stl) | Additional chassis component; preview shown above |
 | Dual-camera mount | [`dual_camera_mount.stl`](./cad/dual_camera_mount.stl) | Camera mounting component |
 | Camera case | [`camera_case.stl`](./cad/camera_case.stl) | Camera protection/enclosure |
 | Circuit box | [`circuit_box.stl`](./cad/circuit_box.stl) | Electronics enclosure |
@@ -665,3 +696,88 @@ Avoid generic messages like `Add files via upload` when the commit is actually f
 We are not trying to make the robot sound more advanced than it is. The repository is meant to show what we actually built, what went wrong during testing, what we changed and what results we got.
 
 If we did not measure something, we have not added a made-up number. If a part was only used in an earlier prototype, it is labelled as an earlier version. If we change something for Nationals, we will update the relevant code and documentation too.
+---
+
+# Documentation Index
+
+**Start here:** [Build The Dark Knight from zero →](./BUILD_FROM_ZERO.md)
+
+This section is here so a new builder or a judge can jump to the exact part of the repository they need without searching through every file.
+
+## Build from zero
+
+[Open the complete build-from-zero guide →](./BUILD_FROM_ZERO.md)
+
+A step-by-step path from an empty workbench to the documented robot, including the parts list, printing order, drivetrain, electronics, cameras and software setup.
+
+## Parts checklist
+
+[Open the parts checklist →](./PARTS_CHECKLIST.md)
+
+The quickest list for checking the electronics, printed parts and LEGO drivetrain components before building.
+
+## Wiring and pin reference
+
+[Open the wiring and pin reference →](./WIRING_AND_PIN_REFERENCE.md)
+
+Power branches, GPIO assignments, camera indexes and measured voltages.
+
+## Software setup
+
+[Open the Raspberry Pi software setup →](./SOFTWARE_SETUP.md)
+
+OS setup, repository setup, Python dependencies, source checks and safe pre-run testing.
+
+## Calibration and testing
+
+[Open the calibration and testing procedure →](./CALIBRATION_AND_TESTING.md)
+
+Mechanical, IMU, camera, vision, Open Challenge, Obstacle Challenge and power checks in the order we use them.
+
+## Judge quick start
+
+[Open the judge quick start →](./JUDGE_QUICKSTART.md)
+
+A short path through the final robot, engineering decisions, software and evidence.
+
+## Engineering document
+
+[Open the final engineering PDF →](./documentation/Team_Currents_Final_Document.pdf)
+
+The full engineering record used as the source of truth for the Nationals configuration.
+
+## Testing evidence
+
+[Open the testing folder →](./testing/)
+
+Recorded challenge times, processing observations, measured power values, engineering evolution notes and the Open Challenge video.
+
+## Changelog
+
+[Open the changelog →](./CHANGELOG.md)
+
+The changes that define this Nationals configuration.
+
+## Suggested Git history
+
+[Open the commit plan →](./COMMIT_PLAN.md)
+
+Recommended commit names that make the engineering progression easy to follow.
+
+## Build-from-zero contents
+
+The build guide is intentionally organised in the same order a beginner would build the robot:
+
+1. What you are building
+2. Before buying or printing anything
+3. Parts checklist
+4. Print the CAD parts
+5. Build the mechanical drivetrain
+6. Install the electronics
+7. Install and calibrate the cameras
+8. Set up the Raspberry Pi
+9. Calibrate the robot
+10. Run the first tests
+11. Run the challenges
+12. Troubleshoot and compare results
+
