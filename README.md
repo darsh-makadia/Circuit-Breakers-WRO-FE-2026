@@ -32,7 +32,7 @@ We have kept the final robot information, code, CAD, photos, testing files and e
 - [14. Measured Power Results](#14-measured-power-results)
 - [15. Engineering Evolution](#15-engineering-evolution)
 - [16. Recorded Challenge Performance](#16-recorded-challenge-performance)
-- [17. Development Notes](#17-development-notes)
+- [17. Known Development History](#17-known-development-history)
 - [18. Repository Structure](#18-repository-structure)
 - [19. Reproducibility](#19-reproducibility)
 - [20. Evidence Included in This Repository](#20-evidence-included-in-this-repository)
@@ -79,43 +79,43 @@ We did not build the final version in one step. We changed the motor, chassis, c
 
 # 3. Robot and CAD Visual Reference
 
-These are the robot photos and CAD views used in this repository. The vehicle photos are kept in `photos/` and the CAD previews are in `models/`.
+These are the robot photos and CAD views used in this repository. The vehicle photos are kept in `v-photos/` and the CAD previews are in `models/`.
 
 ## Robot Photos
 
 ### Front View
 
-<img src="./photos/front_view.png" alt="The Dark Knight front view" width="600">
+<img src="./v-photos/front_view.png" alt="The Dark Knight front view" width="600">
 
 ### Back View
 
-<img src="./photos/back_view.png" alt="The Dark Knight back view" width="600">
+<img src="./v-photos/back_view.png" alt="The Dark Knight back view" width="600">
 
 ### Side Views
 
 <p align="center">
-  <img src="./photos/side_view_1.png" alt="The Dark Knight side view 1" width="45%">
-  <img src="./photos/side_view_2.png" alt="The Dark Knight side view 2" width="45%">
+  <img src="./v-photos/side_view_1.png" alt="The Dark Knight side view 1" width="45%">
+  <img src="./v-photos/side_view_2.png" alt="The Dark Knight side view 2" width="45%">
 </p>
 
 ### Motor and Steering
 
 <p align="center">
-  <img src="./photos/motor_close_up.png" alt="JGB37-520 drive motor" width="45%">
-  <img src="./photos/servo_close_up.png" alt="Steering servo" width="45%">
+  <img src="./v-photos/motor_close_up.png" alt="JGB37-520 drive motor" width="45%">
+  <img src="./v-photos/servo_close_up.png" alt="Steering servo" width="45%">
 </p>
 
 ### Differential and Electronics
 
 <p align="center">
-  <img src="./photos/differential.png" alt="Mechanical LEGO differential" width="45%">
-  <img src="./photos/circuit_case_and_battery.png" alt="Electronics and battery" width="45%">
+  <img src="./v-photos/differential.png" alt="Mechanical LEGO differential" width="45%">
+  <img src="./v-photos/circuit_case_and_battery.png" alt="Electronics and battery" width="45%">
 </p>
 
 ### Electronics From Above
 
 <p align="center">
-  <img src="./photos/circuit_from_top.png" alt="Electronics from above" width="700">
+  <img src="./v-photos/circuit_from_top.png" alt="Electronics from above" width="700">
 </p>
 
 ## CAD Models
@@ -531,11 +531,23 @@ Obstacle placement was slightly different between runs, so these are kept exactl
 
 ---
 
-# 17. Development Notes
+# 17. Known Development History
 
-The final robot was built through repeated testing rather than one fixed design. We changed the motor, chassis, camera arrangement, power layout and control logic when testing showed that the earlier setup was not working well enough.
+There are older descriptions in earlier project files because the robot changed during development.
 
-The main development decisions are already recorded in **Section 15: Engineering Evolution**. The important point for the Nationals version is that the hardware and software described in Sections 2–14 are the current configuration.
+Examples include:
+
+- earlier RWD descriptions;
+- earlier single-camera descriptions;
+- older steering values;
+- older wording saying parking was still planned;
+- earlier power tables with values that were not measured.
+
+Those are development-stage details. The Nationals version described in this repository is:
+
+**4WD + mechanical LEGO differential + central driveshaft + two cameras + MPU6050 + CAD/PLA chassis + JGB37-520 + TB6612FNG + 3S LiPo.**
+
+---
 
 # 18. Repository Structure
 
@@ -549,8 +561,11 @@ Team_Currents_Nationals_v1.0/
 │
 ├── code/
 ├── cad/
+├── models/
 ├── schematics/
+├── schemes/
 ├── photos/
+├── v-photos/
 ├── testing/
 └── documentation/
 ```
@@ -645,6 +660,8 @@ Avoid generic messages like `Add files via upload` when the commit is actually f
 
 ---
 
-## Final note
+## Our approach
 
-This README is meant to document the robot we actually built and tested. We have kept the recorded results and measurements as they are. If something was not measured, it is marked that way instead of adding an estimate. If the robot changes after this version, the code and documentation should be updated together.
+We are not trying to make the robot sound more advanced than it is. The repository is meant to show what we actually built, what went wrong during testing, what we changed and what results we got.
+
+If we did not measure something, we have not added a made-up number. If a part was only used in an earlier prototype, it is labelled as an earlier version. If we change something for Nationals, we will update the relevant code and documentation too.
