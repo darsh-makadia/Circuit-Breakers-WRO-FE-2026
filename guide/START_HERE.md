@@ -9,7 +9,3 @@
 **Software:** [Software setup](./SOFTWARE_SETUP.md)
 
 **Testing:** [Calibration and testing](./CALIBRATION_AND_TESTING.md)
-
-**Judge view:** [Judge quick start](./JUDGE_QUICKSTART.md)
-
-**All links:** [Documentation Index](./DOCUMENTATION_INDEX.md)
