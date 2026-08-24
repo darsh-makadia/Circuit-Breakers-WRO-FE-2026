@@ -9,7 +9,6 @@ We have kept the final robot information, code, CAD, photos, testing files and e
 
 ## Table of Contents
 
-- [Repository Index](#repository-index)
 - [1. Team](#1-team)
 - [2. Final Robot Overview](#2-final-robot-overview)
 - [3. Robot and CAD Visual Reference](#3-robot-and-cad-visual-reference)
