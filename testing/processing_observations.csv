@@ -1,0 +1,7 @@
+challenge,test,camera_fps,loop_fps,processing_latency_ms,capture_latency_ms
+Obstacle Challenge,1,11.24,11.32,,1.90
+Obstacle Challenge,2,10.88,10.88,,2.16
+Obstacle Challenge,3,11.55,11.56,,1.80
+Open Challenge,1,14.0,14.0,63.2,1.8
+Open Challenge,2,14.0,14.0,60.7,1.5
+Open Challenge,3,14.3,14.3,60.6,1.8

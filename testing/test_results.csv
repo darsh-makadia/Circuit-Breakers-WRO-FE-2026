@@ -1,0 +1,13 @@
+challenge,run,time_seconds,time_display,observation
+Open Challenge,1,32,0:32,Initial recorded run
+Open Challenge,2,30,0:30,Improvement
+Open Challenge,3,28,0:28,Improvement
+Open Challenge,4,28,0:28,Stable
+Open Challenge,5,28,0:28,Stable
+Open Challenge,6,28,0:28,Stable
+Obstacle Challenge,1,70,1:10,Initial recorded run
+Obstacle Challenge,2,69,1:09,Improvement
+Obstacle Challenge,3,71,1:11,Near the initial result
+Obstacle Challenge,4,80,1:20,Slower placement/test configuration
+Obstacle Challenge,5,75,1:15,Recovery after slower run
+Obstacle Challenge,6,73,1:13,Improved from run 5

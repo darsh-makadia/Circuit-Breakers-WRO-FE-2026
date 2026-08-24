@@ -1,0 +1,9 @@
+measurement_point,condition,measured_value,current_measurement
+LiPo battery,Before run,11.1 V,Not measured
+LiPo battery,After multiple runs,10.8 V,Not measured
+Buck 1 output,Motors OFF,5.0 V,Not measured
+Buck 1 output,Robot moving,5.0 V,Not measured
+Pi supply,Idle,5.0 V,Not measured
+Pi supply,Moving,5.0 V,Not measured
+Motor driver,Motor OFF,11.1 V,Not measured
+Motor driver,Motor ON,10.8 V,Not measured
