@@ -1,4 +1,3 @@
-
 # The Dark Knight
 ## WRO Future Engineers 2026 — Team Current
 ### v1.0 — Nationals Configuration
@@ -7,8 +6,11 @@ This is the GitHub repository for **The Dark Knight**, our WRO Future Engineers 
 
 We have kept the final robot information, code, CAD, photos, testing files and engineering documentation here so that everything for our Nationals version is in one place.
 
+For judging, the repository is organized around four things: **buildability, engineering decisions, software traceability and test evidence**. The files linked below are the actual project files used to document and reproduce the Nationals configuration.
+
 ## Table of Contents
 
+- [Repository Index](#repository-index)
 - [1. Team](#1-team)
 - [2. Final Robot Overview](#2-final-robot-overview)
 - [3. Robot and CAD Visual Reference](#3-robot-and-cad-visual-reference)
@@ -18,18 +20,11 @@ We have kept the final robot information, code, CAD, photos, testing files and e
   - [Final STL Files](#final-stl-files)
 - [4. Final Robot Specifications](#4-final-robot-specifications)
 - [5. Mechanical Design](#5-mechanical-design)
-  - [5.1 CAD + LEGO hybrid architecture](#51-cad--lego-hybrid-architecture)
-  - [5.2 Four-wheel drive](#52-four-wheel-drive)
-  - [5.3 Gear ratio](#53-gear-ratio)
 - [6. Cameras and Perception](#6-cameras-and-perception)
 - [7. Computer Vision](#7-computer-vision)
 - [8. Steering](#8-steering)
 - [9. Software Architecture](#9-software-architecture)
 - [10. Open Challenge](#10-open-challenge)
-  - [10.1 Navigation](#101-navigation)
-  - [10.2 Direction markers](#102-direction-markers)
-  - [10.3 Marker counting](#103-marker-counting)
-  - [10.4 Recorded results](#104-recorded-results)
 - [11. Obstacle Challenge](#11-obstacle-challenge)
 - [12. Parking and MPU6050](#12-parking-and-mpu6050)
 - [13. Power Architecture](#13-power-architecture)
@@ -42,6 +37,40 @@ We have kept the final robot information, code, CAD, photos, testing files and e
 - [20. Evidence Included in This Repository](#20-evidence-included-in-this-repository)
 - [21. Final Nationals Configuration Verification](#21-final-nationals-configuration-verification)
 - [22. Version](#22-version)
+
+## Repository Index
+
+### Start here
+
+1. [Start Here](./guide/START_HERE.md)
+2. [Build From Zero](./guide/BUILD_FROM_ZERO.md)
+3. [Parts Checklist](./guide/PARTS_CHECKLIST.md)
+4. [Wiring and Pin Reference](./guide/WIRING_AND_PIN_REFERENCE.md)
+5. [Software Setup](./guide/SOFTWARE_SETUP.md)
+
+### Engineering evidence
+
+- [Power & Sensor Evidence](./guide/POWER_AND_SENSOR_EVIDENCE.md)
+- [Reproducibility Evidence](./guide/REPRODUCIBILITY.md)
+- [Changelog](./CHANGELOG.md)
+- [Testing Evidence](./testing/)
+- [Open Challenge Video](./testing/Open_Challenge.mp4)
+- [Power Measurements](./testing/power_measurements.csv)
+- [Test Results](./testing/test_results.csv)
+- [Test Summary](./testing/test_summary.md)
+- [Engineering Evolution](./testing/engineering_evolution.md)
+
+### Robot files
+
+- [Source Code](./src/)
+- [CAD / STL Models](./models/)
+- [Robot Photos](./v-photos/)
+- [Circuit Schematic](./schemes/schematic.png)
+- [Video Evidence](./video/)
+
+### Recommended judge path
+
+**Start Here → Build From Zero → Parts Checklist → Wiring Reference → Software Setup → README engineering sections → Testing Evidence → Source Code → CAD/STL → Changelog**
 
 ---
 
@@ -326,14 +355,14 @@ The software is written in **Python** and runs on the Raspberry Pi 5.
 |---|---|
 | `config.py` | Main calibration and configuration values |
 | `drive.py` | Motor and steering control |
-| `heaeding.py` | MPU6050 heading and calibration |
+| `heading.py` | MPU6050 heading and calibration |
 | `vision.py` | Camera and colour/target processing |
 | `openVision.py` | Open Challenge vision processing |
 | `open_challenge.py` | Open Challenge navigation and marker/lap logic |
 | `obstacle_challenge.py` | Obstacle detection and avoidance |
 | `parking.py` | Parking state machine and IMU-guided turns |
-| `Current_Open_8_22.py` | Open Challenge program |
-| `Current_Obstacle_8_21.py` | Obstacle Challenge program |
+| `run_open.py` | Open Challenge launcher |
+| `run_obstacle.py` | Obstacle Challenge launcher |
 
 The current code also has safety handling for IMU/I2C errors, bounded IMU turns, obstacle confirmation and safe stopping.
 
@@ -564,54 +593,154 @@ Those are development-stage details. The Nationals version described in this rep
 Team-Current-WRO-FE-2026/
 │
 ├── README.md
+├── CHANGELOG.md
 │
 ├── guide/
 │   ├── START_HERE.md
 │   ├── BUILD_FROM_ZERO.md
 │   ├── PARTS_CHECKLIST.md
 │   ├── WIRING_AND_PIN_REFERENCE.md
-│   └── SOFTWARE_SETUP.md
+│   ├── SOFTWARE_SETUP.md
+│   ├── POWER_AND_SENSOR_EVIDENCE.md
+│   └── REPRODUCIBILITY.md
 │
 ├── models/
-│   ├── STL files
-│   └── CAD preview images
+│   ├── CAD preview images
+│   └── final STL exports
 │
 ├── schemes/
 │   └── schematic.png
 │
 ├── src/
-│   ├── Challenge programs
-│   ├── Drive and steering
-│   ├── Vision
-│   ├── Parking
-│   └── MPU6050 heading
+│   ├── Current_Open_8_22.py
+│   ├── Current_Obstacle_8_21.py
+│   ├── drive.py
+│   ├── heaeding.py
+│   ├── openVision.py
+│   ├── parking.py
+│   └── vision.py
 │
-└── v-photos/
-    └── Robot photographs
+├── testing/
+│   ├── Open_Challenge.mp4
+│   ├── engineering_evolution.md
+│   ├── power_measurements.csv
+│   ├── processing_observations.csv
+│   ├── test_results.csv
+│   └── test_summary.md
+│
+├── t-photos/
+├── v-photos/
+└── video/
 ```
 
-The folders are kept separate so the source code, CAD/STL files, photographs, schematic and build guides can be found directly from the README.
+The repository is separated by function so a judge can move from **how to build the robot**, to **how it is wired**, to **how the software runs**, to **the evidence from testing**, and finally to the **actual source and CAD files**.
+
+The source filenames above match the current `src/` directory. The testing files listed above are the files used as evidence for the documented results.
 
 ---
 
 # 19. Reproducibility
 
-To build a robot similar to this version, the main hardware is:
+The repository is organized so another team, mentor or judge can trace the final Nationals configuration from the physical build to the software and the test evidence.
 
-- Raspberry Pi 5, 4 GB
-- 2 × Raspberry Pi Camera Module 3
-- JGB37-520 12 V 600 RPM motor
-- servo motor
-- MPU6050
-- TB6612FNG motor driver
-- 3S 2200 mAh LiPo
-- buck converter(s)
-- PLA printed parts
-- required LEGO Technic drivetrain/differential parts
+## 19.1 Build path
 
-The software is Python-based. The repository source uses the Raspberry Pi camera environment and libraries including OpenCV, NumPy, RPi.GPIO and Picamera2.
+**Step 1 — Parts**
 
-The important final control values are in `src/config.py` and the challenge source files.
+Use [`PARTS_CHECKLIST.md`](./guide/PARTS_CHECKLIST.md) to identify the documented components.
+
+**Step 2 — Mechanical build**
+
+Use [`BUILD_FROM_ZERO.md`](./guide/BUILD_FROM_ZERO.md) together with the CAD/STL files in [`models/`](./models/).
+
+**Step 3 — Wiring**
+
+Use [`WIRING_AND_PIN_REFERENCE.md`](./guide/WIRING_AND_PIN_REFERENCE.md) and the final [schematic](./schemes/schematic.png).
+
+**Step 4 — Software**
+
+Use [`SOFTWARE_SETUP.md`](./guide/SOFTWARE_SETUP.md), then use the programs and modules in [`src/`](./src/).
+
+**Step 5 — Calibration**
+
+Verify camera placement, steering centre/range, vision thresholds and MPU6050 calibration before challenge testing.
+
+**Step 6 — Validation**
+
+Use the files in [`testing/`](./testing/) to compare the rebuilt robot with the recorded Nationals configuration.
+
+## 19.2 Source-to-function map
+
+| Source file | Purpose |
+|---|---|
+| [`Current_Open_8_22.py`](./src/Current_Open_8_22.py) | Open Challenge program |
+| [`Current_Obstacle_8_21.py`](./src/Current_Obstacle_8_21.py) | Obstacle Challenge program |
+| [`drive.py`](./src/drive.py) | Motor and steering control |
+| [`vision.py`](./src/vision.py) | Main vision processing |
+| [`openVision.py`](./src/openVision.py) | Open Challenge vision processing |
+| [`parking.py`](./src/parking.py) | Parking logic |
+| [`heaeding.py`](./src/heaeding.py) | MPU6050 heading and calibration |
+
+## 19.3 Testing workflow
+
+Every important engineering change is evaluated using the same basic cycle:
+
+**Problem → hypothesis → change → test → measured result → decision**
+
+Examples documented in this repository include:
+
+- motor/chassis changes after early drivetrain testing;
+- camera-placement changes after perception testing;
+- marker-counting changes after repeated detections;
+- IMU-based parking control after timed turns proved less reliable;
+- vision threshold changes after field testing.
+
+The supporting records are kept in:
+
+- [`engineering_evolution.md`](./testing/engineering_evolution.md)
+- [`test_results.csv`](./testing/test_results.csv)
+- [`processing_observations.csv`](./testing/processing_observations.csv)
+- [`test_summary.md`](./testing/test_summary.md)
+- [`power_measurements.csv`](./testing/power_measurements.csv)
+
+## 19.4 Configuration traceability
+
+The documented final configuration is kept consistent across:
+
+- this README;
+- the build and wiring guides;
+- the source code;
+- CAD/STL files;
+- the schematic;
+- testing records;
+- [`CHANGELOG.md`](./CHANGELOG.md).
+
+If a competition configuration changes, the corresponding source, guide and changelog entry should be updated together.
+
+## 19.5 Versioning
+
+The repository uses a Nationals configuration baseline and keeps a changelog at [`CHANGELOG.md`](./CHANGELOG.md).
+
+For future engineering changes, commit messages should describe the actual change, for example:
+
+```text
+vision: improve obstacle confidence
+parking: calibrate IMU turn
+drive: update steering limits
+mechanical: revise camera mount
+testing: record obstacle challenge runs
+docs: update Nationals configuration
+```
+
+This makes the engineering history easier to follow than generic file-upload messages.
+
+## 19.6 Honest measurement policy
+
+Measured values are labelled as measured.
+
+Where a quantity has not been directly measured, the repository says **not measured** rather than presenting a manufacturer rating or an estimate as a robot test result.
+
+This is particularly important for the current/power dataset in [`power_measurements.csv`](./testing/power_measurements.csv).
 
 ---
 
@@ -619,16 +748,18 @@ The important final control values are in `src/config.py` and the challenge sour
 
 The repository currently contains:
 
+- engineering documentation and index;
 - final Python source;
-- final STL exports in `models/`;
+- final STL exports supplied by us in `models/`;
 - CAD preview images;
 - schematic preview;
 - robot photographs;
+- Open Challenge test video;
 - recorded challenge results;
 - measured power-voltage results;
 - engineering evolution notes.
 
-The CAD/STL files, schematic and photographs in the repository correspond to the documented robot configuration.
+The native CAD and schematic source files should only be added if we actually have the editable files. We have not made replacement source files from screenshots or STL exports.
 
 ---
 
@@ -651,9 +782,9 @@ Before using this as the Nationals version, we checked the main robot details ag
 | Open Challenge best | **28 s** |
 | Obstacle Challenge best | **1:09** |
 | Current measurement | **Not measured** |
-| Documentation guides | **Included in `guide/`** |
+| Documentation index | **Included at `guide/`** |
 | Final STL exports | **Included in `models/`** |
-| Open Challenge evidence | **Included in the repository** |
+| Open Challenge video | **Included in `testing/`** |
 
 If we change the physical robot after this version, the code and documentation need to be changed as well. Otherwise, this is the configuration we are using as the Nationals baseline.
 
