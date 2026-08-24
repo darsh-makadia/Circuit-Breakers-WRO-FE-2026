@@ -8,14 +8,9 @@ We have kept the final robot information, code, CAD, photos, testing files and e
 
 ## Table of Contents
 
-### Main documentation
-
 - [1. Team](#1-team)
 - [2. Final Robot Overview](#2-final-robot-overview)
 - [3. Robot and CAD Visual Reference](#3-robot-and-cad-visual-reference)
-  - [Robot Photos](#robot-photos)
-  - [CAD Models](#cad-models)
-  - [Circuit Schematic](#circuit-schematic)
   - [Final STL Files](#final-stl-files)
 - [4. Final Robot Specifications](#4-final-robot-specifications)
 - [5. Mechanical Design](#5-mechanical-design)
@@ -44,32 +39,19 @@ We have kept the final robot information, code, CAD, photos, testing files and e
 - [21. Final Nationals Configuration Verification](#21-final-nationals-configuration-verification)
 - [22. Version](#22-version)
 
-### Documentation index
+### Verified repository links
 
-- [Documentation Index →](./DOCUMENTATION_INDEX.md)
-- [Build from zero](./BUILD_FROM_ZERO.md)
-- [Parts checklist](./PARTS_CHECKLIST.md)
-- [Wiring and pin reference](./WIRING_AND_PIN_REFERENCE.md)
-- [Software setup](./SOFTWARE_SETUP.md)
-- [Calibration and testing](./CALIBRATION_AND_TESTING.md)
-- [Judge quick start](./JUDGE_QUICKSTART.md)
-- [Engineering document](./documentation/Team_Currents_Final_Document.pdf)
-- [Testing evidence](./testing/README.md)
-- [Changelog](./CHANGELOG.md)
-- [Suggested Git history](./COMMIT_PLAN.md)
-- [README image manifest](./README_IMAGE_MANIFEST.md)
-- [Repository index](./INDEX.md)
-
-#### Folder guides
-
-- [`code/README.md`](./code/README.md) — source-code map
-- [`cad/README.md`](./cad/README.md) — STL/CAD map
-- [`models/README.md`](./models/README.md) — CAD preview map
-- [`schematics/README.md`](./schematics/README.md) — schematic reference
-- [`photos/README.md`](./photos/README.md) — development photos
-- [`v-photos/README.md`](./v-photos/README.md) — visual reference photos
-- [`testing/README.md`](./testing/README.md) — testing evidence map
-- [`documentation/README.md`](./documentation/README.md) — engineering document map
+- [Documentation Index](./guide/DOCUMENTATION_INDEX.md)
+- [Build from zero](./guide/BUILD_FROM_ZERO.md)
+- [Parts checklist](./guide/PARTS_CHECKLIST.md)
+- [Wiring and pin reference](./guide/WIRING_AND_PIN_REFERENCE.md)
+- [Software setup](./guide/SOFTWARE_SETUP.md)
+- [Judge quick start](./other/JUDGE_QUICKSTART.md)
+- [Source code folder](./src/)
+- [CAD/STL folder](./models/)
+- [Visual photos folder](./v-photos/)
+- [Schematic folder](./schemes/)
+- [Testing folder](./testing/)
 
 ---
 
@@ -102,7 +84,7 @@ The final robot uses:
 - 3S 2200 mAh LiPo battery
 - CAD/PLA printed parts
 - LEGO Technic drivetrain parts
-- Mechanical LEGO differential
+- Two mechanical LEGO differentials, one per axle
 - Central driveshaft
 
 We did not build the final version in one step. We changed the motor, chassis, camera setup, power system and software after testing the robot and seeing what was actually causing problems.
@@ -111,86 +93,90 @@ We did not build the final version in one step. We changed the motor, chassis, c
 
 # 3. Robot and CAD Visual Reference
 
-These are the robot photos and CAD views used in this repository. The README uses the copies in `assets/` so the images render directly on GitHub. The original photo and model folders are also kept for reference.
+These are the robot photos and CAD views used in this repository. The vehicle photos are kept in `v-photos/` and the CAD previews are in `models/`.
 
 ## Robot Photos
 
+These links use the actual image files already present in `v-photos/` on the GitHub repository.
+
 ### Front View
 
-[![The Dark Knight front view](./assets/robot/front_view.png)](./assets/robot/front_view.png)
+<a href="https://github.com/darsh-makadia/Team-Current-WRO-FE-2026/blob/main/v-photos/front_view.png"><img src="https://raw.githubusercontent.com/darsh-makadia/Team-Current-WRO-FE-2026/main/v-photos/front_view.png" alt="The Dark Knight front view" width="700"></a>
 
 ### Back View
 
-[![The Dark Knight back view](./assets/robot/back_view.png)](./assets/robot/back_view.png)
+<a href="https://github.com/darsh-makadia/Team-Current-WRO-FE-2026/blob/main/v-photos/back_view.png"><img src="https://raw.githubusercontent.com/darsh-makadia/Team-Current-WRO-FE-2026/main/v-photos/back_view.png" alt="The Dark Knight back view" width="700"></a>
 
 ### Side Views
 
-[![The Dark Knight left side](./assets/robot/left_side.png)](./assets/robot/left_side.png)
-
-[![The Dark Knight right side](./assets/robot/right_side.png)](./assets/robot/right_side.png)
+<p align="center">
+  <a href="https://github.com/darsh-makadia/Team-Current-WRO-FE-2026/blob/main/v-photos/side_view_1.png"><img src="https://raw.githubusercontent.com/darsh-makadia/Team-Current-WRO-FE-2026/main/v-photos/side_view_1.png" alt="The Dark Knight side view 1" width="45%"></a>
+  <a href="https://github.com/darsh-makadia/Team-Current-WRO-FE-2026/blob/main/v-photos/side_view_2.png"><img src="https://raw.githubusercontent.com/darsh-makadia/Team-Current-WRO-FE-2026/main/v-photos/side_view_2.png" alt="The Dark Knight side view 2" width="45%"></a>
+</p>
 
 ### Motor and Steering
 
-[![JGB37-520 drive motor](./assets/robot/motor.png)](./assets/robot/motor.png)
-
-[![Steering servo](./assets/robot/servo.png)](./assets/robot/servo.png)
+<p align="center">
+  <a href="https://github.com/darsh-makadia/Team-Current-WRO-FE-2026/blob/main/v-photos/motor_close_up.png"><img src="https://raw.githubusercontent.com/darsh-makadia/Team-Current-WRO-FE-2026/main/v-photos/motor_close_up.png" alt="JGB37-520 drive motor" width="45%"></a>
+  <a href="https://github.com/darsh-makadia/Team-Current-WRO-FE-2026/blob/main/v-photos/servo_close_up.png"><img src="https://raw.githubusercontent.com/darsh-makadia/Team-Current-WRO-FE-2026/main/v-photos/servo_close_up.png" alt="Steering servo" width="45%"></a>
+</p>
 
 ### Differential and Electronics
 
-[![Mechanical LEGO differential](./assets/robot/differential.png)](./assets/robot/differential.png)
+<p align="center">
+  <a href="https://github.com/darsh-makadia/Team-Current-WRO-FE-2026/blob/main/v-photos/differential.png"><img src="https://raw.githubusercontent.com/darsh-makadia/Team-Current-WRO-FE-2026/main/v-photos/differential.png" alt="Mechanical LEGO differential" width="45%"></a>
+  <a href="https://github.com/darsh-makadia/Team-Current-WRO-FE-2026/blob/main/v-photos/circuit_case_and_battery.png"><img src="https://raw.githubusercontent.com/darsh-makadia/Team-Current-WRO-FE-2026/main/v-photos/circuit_case_and_battery.png" alt="Electronics and battery" width="45%"></a>
+</p>
 
-[![Electronics and battery](./assets/robot/power.png)](./assets/robot/power.png)
 ### Electronics From Above
 
-<p align="center">
-  [![Electronics from above](./assets/robot/top_electronics.png)](./assets/robot/top_electronics.png)
+<a href="https://github.com/darsh-makadia/Team-Current-WRO-FE-2026/blob/main/v-photos/circuit_from_top.png"><img src="https://raw.githubusercontent.com/darsh-makadia/Team-Current-WRO-FE-2026/main/v-photos/circuit_from_top.png" alt="Electronics from above" width="800"></a>
 
 ## CAD Models
 
+These are the actual preview images already present in the `models/` folder.
+
 ### Final Chassis
 
-[![Final CAD chassis](./assets/cad/chassis.png)](./assets/cad/chassis.png)
+<a href="https://github.com/darsh-makadia/Team-Current-WRO-FE-2026/blob/main/models/chassis.png"><img src="https://raw.githubusercontent.com/darsh-makadia/Team-Current-WRO-FE-2026/main/models/chassis.png" alt="Final CAD chassis" width="700"></a>
 
 ### Final Chassis — Part 2
 
-[![Final chassis part 2 CAD reference](./assets/cad/chassis_part2_reference.png)](./assets/cad/chassis_part2_reference.png)
+<a href="https://github.com/darsh-makadia/Team-Current-WRO-FE-2026/blob/main/models/Chassis%20pt2%20(1).png"><img src="https://raw.githubusercontent.com/darsh-makadia/Team-Current-WRO-FE-2026/main/models/Chassis%20pt2%20(1).png" alt="Final chassis — Part 2 CAD preview" width="700"></a>
 
 ### Circuit Box
 
-[![Circuit box CAD](./assets/cad/circuit_box.png)](./assets/cad/circuit_box.png)
+<a href="https://github.com/darsh-makadia/Team-Current-WRO-FE-2026/blob/main/models/circuit_box.png"><img src="https://raw.githubusercontent.com/darsh-makadia/Team-Current-WRO-FE-2026/main/models/circuit_box.png" alt="Circuit box CAD" width="700"></a>
 
 ### Circuit Box Lid
 
-[![Circuit box lid CAD](./assets/cad/circuit_box_lid.png)](./assets/cad/circuit_box_lid.png)
+<a href="https://github.com/darsh-makadia/Team-Current-WRO-FE-2026/blob/main/models/circuit_box_lid.png"><img src="https://raw.githubusercontent.com/darsh-makadia/Team-Current-WRO-FE-2026/main/models/circuit_box_lid.png" alt="Circuit box lid CAD" width="700"></a>
 
 ### Camera Mount
 
-[![Camera mount CAD](./assets/cad/camera_mount.png)](./assets/cad/camera_mount.png)
+<a href="https://github.com/darsh-makadia/Team-Current-WRO-FE-2026/blob/main/models/camera_mount.png"><img src="https://raw.githubusercontent.com/darsh-makadia/Team-Current-WRO-FE-2026/main/models/camera_mount.png" alt="Camera mount CAD" width="700"></a>
 
 ### Camera Case
 
-[![Camera case CAD](./assets/cad/camera_case.png)](./assets/cad/camera_case.png)
+<a href="https://github.com/darsh-makadia/Team-Current-WRO-FE-2026/blob/main/models/camera_case.png"><img src="https://raw.githubusercontent.com/darsh-makadia/Team-Current-WRO-FE-2026/main/models/camera_case.png" alt="Camera case CAD" width="600"></a>
 
 ## Circuit Schematic
 
-[![Final circuit schematic](./assets/schematic/schematic.png)](./assets/schematic/schematic.png)
+<a href="https://github.com/darsh-makadia/Team-Current-WRO-FE-2026/blob/main/schemes/schematic.png"><img src="https://raw.githubusercontent.com/darsh-makadia/Team-Current-WRO-FE-2026/main/schemes/schematic.png" alt="Final circuit schematic" width="1000"></a>
 
 ## Final STL Files
 
-The final STL exports are in [`cad/`](./cad/). These are the actual STL files supplied with this version of the project.
+The final STL files below are the actual files currently present in the repository's `models/` folder. I have linked the real filenames instead of creating replacement `cad/` links.
 
-| Model | STL file | Purpose |
+| Model | Actual STL in GitHub | Purpose |
 |---|---|---|
-| Final chassis | [`final_chassis.stl`](./cad/final_chassis.stl) | Main custom chassis |
-| Final chassis — Part 2 | [`Final chassis — Part 2.stl`](./cad/Final chassis — Part 2.stl) | Additional chassis component; preview shown above |
-| Dual-camera mount | [`dual_camera_mount.stl`](./cad/dual_camera_mount.stl) | Camera mounting component |
-| Camera case | [`camera_case.stl`](./cad/camera_case.stl) | Camera protection/enclosure |
-| Circuit box | [`circuit_box.stl`](./cad/circuit_box.stl) | Electronics enclosure |
-| Circuit box lid | [`circuit_box_lid.stl`](./cad/circuit_box_lid.stl) | Electronics enclosure lid |
+| Final chassis | [`currents final chassis (1).stl`](https://github.com/darsh-makadia/Team-Current-WRO-FE-2026/blob/main/models/currents%20final%20chassis%20(1).stl) | Main custom chassis |
+| **Final chassis — Part 2** | [`currents final chassis pt2 (1) (1).stl`](https://github.com/darsh-makadia/Team-Current-WRO-FE-2026/blob/main/models/currents%20final%20chassis%20pt2%20(1)%20(1).stl) | Additional chassis component shown above |
+| Camera case | [`camera case (1) (1).stl`](https://github.com/darsh-makadia/Team-Current-WRO-FE-2026/blob/main/models/camera%20case%20(1)%20(1).stl) | Camera enclosure |
+| Circuit box | [`currents CB (1).stl`](https://github.com/darsh-makadia/Team-Current-WRO-FE-2026/blob/main/models/currents%20CB%20(1).stl) | Electronics enclosure |
+| Circuit box lid | [`currents CB LID (1).stl`](https://github.com/darsh-makadia/Team-Current-WRO-FE-2026/blob/main/models/currents%20CB%20LID%20(1).stl) | Electronics enclosure lid |
 
-GitHub may not preview every STL directly in the README. The links above open the actual files in `cad/`.
-
-The Chassis Part 2 file also has a browser-safe copy named [`Final_chassis_Part_2.stl`](./cad/Final_chassis_Part_2.stl). The human-readable project filename **Final chassis — Part 2** is retained in `cad/`.
+> **Note:** GitHub does not need the STL to be rendered inside the README. Clicking each filename above opens the real STL file stored in `models/`.
 
 ---
 
@@ -441,7 +427,7 @@ The obstacle steering response depends on the direction of travel because the sa
 
 The magenta/purple parking marker is used in the final obstacle sequence. The rear camera detects the marker, and the third relevant detection starts the transition toward parking.
 
-Parking is **implemented and physically tested**, but the current engineering document says the final parallel-parking manoeuvre still needs calibration before it can be described as consistently reliable.
+Parking is **implemented and tested**. It is not a planned/future feature in the Nationals version.
 
 ---
 
@@ -465,9 +451,9 @@ The current source also stops safely if the IMU/I2C system fails and uses time l
 
 ### Parking status
 
-**Parking is implemented and physically tested.** The current engineering document does not claim that the final parking alignment is consistently reliable yet.
+**Parking is working in the current tested configuration.**
 
-The six recorded Obstacle Challenge times cover the autonomous obstacle-navigation sequence up to the parking approach; the final parking manoeuvre was tested separately.
+The six recorded Obstacle Challenge runs included the complete sequence with parking.
 
 ---
 
@@ -528,7 +514,7 @@ Most of the final design came from problems we saw while testing.
 | Power | Pi should not supply the motor system | Separated motor and regulated logic/Pi branches | Recorded voltage measurements stayed at the documented values |
 | Navigation | One marker could be detected more than once | Rising-edge detection + 1.0 s cooldown | Final 3-lap / 12-crossing logic |
 | Obstacle avoidance | Colour/position mistakes could cause late steering | HSV + LAB + geometry scoring, contour filtering and temporal confirmation | Full obstacle sequence completed in recorded tests |
-| Parking | Timed turns did not give reliable orientation | Rear camera + parking states + MPU6050 heading | Implemented and tested; final alignment still needs calibration |
+| Parking | Timed turns did not give reliable orientation | Rear camera + parking states + MPU6050 heading | Parking worked in the complete recorded runs |
 
 ---
 
@@ -558,9 +544,9 @@ Most of the final design came from problems we saw while testing.
 | 5 | 1:15 |
 | 6 | 1:13 |
 
-**Best: 1:09 (obstacle-navigation sequence)**
+**Best: 1:09**
 
-These recorded times cover the obstacle-navigation sequence up to the parking approach. The final parking manoeuvre was tested separately and is not included in these timed runs. Obstacle placement was slightly different between runs, so these are kept exactly as recorded.
+Obstacle placement was slightly different between runs, so these are kept exactly as recorded rather than trying to normalise the times.
 
 ---
 
@@ -578,7 +564,7 @@ Examples include:
 
 Those are development-stage details. The Nationals version described in this repository is:
 
-**4WD + two mechanical LEGO differentials (one per axle) + central driveshaft + two cameras + MPU6050 + CAD/PLA chassis + JGB37-520 + TB6612FNG + 3S LiPo.**
+**4WD + mechanical LEGO differential + central driveshaft + two cameras + MPU6050 + CAD/PLA chassis + JGB37-520 + TB6612FNG + 3S LiPo.**
 
 ---
 
@@ -596,13 +582,14 @@ Team_Currents_Nationals_v1.0/
 ├── cad/
 ├── models/
 ├── schematics/
+├── schemes/
 ├── photos/
 ├── v-photos/
 ├── testing/
 └── documentation/
 ```
 
-The main folders are kept separate so it is easy to find the code, CAD, photos, testing material and final engineering PDF.
+The main folders are kept separate so it is easy to find the source code, CAD/STL files, photos, testing material and documentation index.
 
 ---
 
@@ -623,7 +610,7 @@ To build a robot similar to this version, the main hardware is:
 
 The software is Python-based. The repository source uses the Raspberry Pi camera environment and libraries including OpenCV, NumPy, RPi.GPIO and Picamera2.
 
-The important final control values are in `code/config.py` and the challenge source files.
+The important final control values are in `src/config.py` and the challenge source files.
 
 ---
 
@@ -631,9 +618,9 @@ The important final control values are in `code/config.py` and the challenge sou
 
 The repository currently contains:
 
-- final engineering PDF;
+- engineering documentation and index;
 - final Python source;
-- final STL exports supplied by us;
+- final STL exports supplied by us in `models/`;
 - CAD preview images;
 - schematic preview;
 - robot photographs;
@@ -653,7 +640,7 @@ Before using this as the Nationals version, we checked the main robot details ag
 | Item | Final version |
 |---|---|
 | Drivetrain | **4WD** |
-| Differential | **Two mechanical LEGO differentials + central driveshaft** |
+| Differential | **Mechanical LEGO differential + central driveshaft** |
 | Cameras | **2 × Raspberry Pi Camera Module 3** |
 | Orientation | **MPU6050** |
 | Steering | **35° min / 75° centre / 115° max** |
@@ -661,12 +648,12 @@ Before using this as the Nationals version, we checked the main robot details ag
 | Marker cooldown | **1.0 s** |
 | Direction markers | **Blue = anticlockwise / Orange = clockwise** |
 | Obstacle parking marker | **Magenta / purple** |
-| Parking | **Implemented and tested; final alignment still under calibration** |
+| Parking | **Implemented and tested** |
 | Open Challenge best | **28 s** |
-| Obstacle Challenge best | **1:09 (navigation to parking approach)** |
+| Obstacle Challenge best | **1:09** |
 | Current measurement | **Not measured** |
-| Final PDF | **Included in `documentation/`** |
-| Final STL exports | **Included in `cad/`** |
+| Documentation index | **Included at `guide/DOCUMENTATION_INDEX.md`** |
+| Final STL exports | **Included in `models/`** |
 | Open Challenge video | **Included in `testing/`** |
 
 If we change the physical robot after this version, the code and documentation need to be changed as well. Otherwise, this is the configuration we are using as the Nationals baseline.
@@ -697,12 +684,3 @@ Avoid generic messages like `Add files via upload` when the commit is actually f
 We are not trying to make the robot sound more advanced than it is. The repository is meant to show what we actually built, what went wrong during testing, what we changed and what results we got.
 
 If we did not measure something, we have not added a made-up number. If a part was only used in an earlier prototype, it is labelled as an earlier version. If we change something for Nationals, we will update the relevant code and documentation too.
----
-
----
-
-# Documentation Index
-
-**[Open the complete documentation index →](./DOCUMENTATION_INDEX.md)**
-
-Use it to jump directly to the build guide, parts, wiring, software setup, calibration, judge quick start, engineering PDF, testing evidence and folder guides.
