@@ -46,7 +46,7 @@ We have kept the final robot information, code, CAD, photos, testing files and e
 
 ### Documentation index
 
-- [Documentation Index](#documentation-index)
+- [Documentation Index →](./DOCUMENTATION_INDEX.md)
 - [Build from zero](./BUILD_FROM_ZERO.md)
 - [Parts checklist](./PARTS_CHECKLIST.md)
 - [Wiring and pin reference](./WIRING_AND_PIN_REFERENCE.md)
@@ -54,7 +54,7 @@ We have kept the final robot information, code, CAD, photos, testing files and e
 - [Calibration and testing](./CALIBRATION_AND_TESTING.md)
 - [Judge quick start](./JUDGE_QUICKSTART.md)
 - [Engineering document](./documentation/Team_Currents_Final_Document.pdf)
-- [Testing evidence](./testing/)
+- [Testing evidence](./testing/README.md)
 - [Changelog](./CHANGELOG.md)
 - [Suggested Git history](./COMMIT_PLAN.md)
 - [README image manifest](./README_IMAGE_MANIFEST.md)
@@ -188,7 +188,9 @@ The final STL exports are in [`cad/`](./cad/). These are the actual STL files su
 | Circuit box | [`circuit_box.stl`](./cad/circuit_box.stl) | Electronics enclosure |
 | Circuit box lid | [`circuit_box_lid.stl`](./cad/circuit_box_lid.stl) | Electronics enclosure lid |
 
-GitHub may not preview every STL directly in the README, so the links above open the actual files in `cad/`.
+GitHub may not preview every STL directly in the README. The links above open the actual files in `cad/`.
+
+The Chassis Part 2 file also has a browser-safe copy named [`Final_chassis_Part_2.stl`](./cad/Final_chassis_Part_2.stl). The human-readable project filename **Final chassis — Part 2** is retained in `cad/`.
 
 ---
 
@@ -203,7 +205,7 @@ GitHub may not preview every STL directly in the README, so the links above open
 | Wheel diameter | **43.2 mm** |
 | Gear ratio | **1.8:1** |
 | Drive configuration | **4WD** |
-| Differential | **Mechanical LEGO differential** |
+| Differential | **Two mechanical LEGO differentials, one per axle** |
 | Drive motor | **JGB37-520 DC 12 V, 600 RPM** |
 | Steering | **Servo steering** |
 | Main computer | **Raspberry Pi 5, 4 GB** |
@@ -439,7 +441,7 @@ The obstacle steering response depends on the direction of travel because the sa
 
 The magenta/purple parking marker is used in the final obstacle sequence. The rear camera detects the marker, and the third relevant detection starts the transition toward parking.
 
-Parking is **implemented and tested**. It is not a planned/future feature in the Nationals version.
+Parking is **implemented and physically tested**, but the current engineering document says the final parallel-parking manoeuvre still needs calibration before it can be described as consistently reliable.
 
 ---
 
@@ -463,9 +465,9 @@ The current source also stops safely if the IMU/I2C system fails and uses time l
 
 ### Parking status
 
-**Parking is working in the current tested configuration.**
+**Parking is implemented and physically tested.** The current engineering document does not claim that the final parking alignment is consistently reliable yet.
 
-The six recorded Obstacle Challenge runs included the complete sequence with parking.
+The six recorded Obstacle Challenge times cover the autonomous obstacle-navigation sequence up to the parking approach; the final parking manoeuvre was tested separately.
 
 ---
 
@@ -526,7 +528,7 @@ Most of the final design came from problems we saw while testing.
 | Power | Pi should not supply the motor system | Separated motor and regulated logic/Pi branches | Recorded voltage measurements stayed at the documented values |
 | Navigation | One marker could be detected more than once | Rising-edge detection + 1.0 s cooldown | Final 3-lap / 12-crossing logic |
 | Obstacle avoidance | Colour/position mistakes could cause late steering | HSV + LAB + geometry scoring, contour filtering and temporal confirmation | Full obstacle sequence completed in recorded tests |
-| Parking | Timed turns did not give reliable orientation | Rear camera + parking states + MPU6050 heading | Parking worked in the complete recorded runs |
+| Parking | Timed turns did not give reliable orientation | Rear camera + parking states + MPU6050 heading | Implemented and tested; final alignment still needs calibration |
 
 ---
 
@@ -556,9 +558,9 @@ Most of the final design came from problems we saw while testing.
 | 5 | 1:15 |
 | 6 | 1:13 |
 
-**Best: 1:09**
+**Best: 1:09 (obstacle-navigation sequence)**
 
-Obstacle placement was slightly different between runs, so these are kept exactly as recorded rather than trying to normalise the times.
+These recorded times cover the obstacle-navigation sequence up to the parking approach. The final parking manoeuvre was tested separately and is not included in these timed runs. Obstacle placement was slightly different between runs, so these are kept exactly as recorded.
 
 ---
 
@@ -576,7 +578,7 @@ Examples include:
 
 Those are development-stage details. The Nationals version described in this repository is:
 
-**4WD + mechanical LEGO differential + central driveshaft + two cameras + MPU6050 + CAD/PLA chassis + JGB37-520 + TB6612FNG + 3S LiPo.**
+**4WD + two mechanical LEGO differentials (one per axle) + central driveshaft + two cameras + MPU6050 + CAD/PLA chassis + JGB37-520 + TB6612FNG + 3S LiPo.**
 
 ---
 
@@ -594,7 +596,6 @@ Team_Currents_Nationals_v1.0/
 ├── cad/
 ├── models/
 ├── schematics/
-├── schemes/
 ├── photos/
 ├── v-photos/
 ├── testing/
@@ -652,7 +653,7 @@ Before using this as the Nationals version, we checked the main robot details ag
 | Item | Final version |
 |---|---|
 | Drivetrain | **4WD** |
-| Differential | **Mechanical LEGO differential + central driveshaft** |
+| Differential | **Two mechanical LEGO differentials + central driveshaft** |
 | Cameras | **2 × Raspberry Pi Camera Module 3** |
 | Orientation | **MPU6050** |
 | Steering | **35° min / 75° centre / 115° max** |
@@ -660,9 +661,9 @@ Before using this as the Nationals version, we checked the main robot details ag
 | Marker cooldown | **1.0 s** |
 | Direction markers | **Blue = anticlockwise / Orange = clockwise** |
 | Obstacle parking marker | **Magenta / purple** |
-| Parking | **Implemented and tested** |
+| Parking | **Implemented and tested; final alignment still under calibration** |
 | Open Challenge best | **28 s** |
-| Obstacle Challenge best | **1:09** |
+| Obstacle Challenge best | **1:09 (navigation to parking approach)** |
 | Current measurement | **Not measured** |
 | Final PDF | **Included in `documentation/`** |
 | Final STL exports | **Included in `cad/`** |
@@ -698,86 +699,10 @@ We are not trying to make the robot sound more advanced than it is. The reposito
 If we did not measure something, we have not added a made-up number. If a part was only used in an earlier prototype, it is labelled as an earlier version. If we change something for Nationals, we will update the relevant code and documentation too.
 ---
 
+---
+
 # Documentation Index
 
-**Start here:** [Build The Dark Knight from zero →](./BUILD_FROM_ZERO.md)
+**[Open the complete documentation index →](./DOCUMENTATION_INDEX.md)**
 
-This section is here so a new builder or a judge can jump to the exact part of the repository they need without searching through every file.
-
-## Build from zero
-
-[Open the complete build-from-zero guide →](./BUILD_FROM_ZERO.md)
-
-A step-by-step path from an empty workbench to the documented robot, including the parts list, printing order, drivetrain, electronics, cameras and software setup.
-
-## Parts checklist
-
-[Open the parts checklist →](./PARTS_CHECKLIST.md)
-
-The quickest list for checking the electronics, printed parts and LEGO drivetrain components before building.
-
-## Wiring and pin reference
-
-[Open the wiring and pin reference →](./WIRING_AND_PIN_REFERENCE.md)
-
-Power branches, GPIO assignments, camera indexes and measured voltages.
-
-## Software setup
-
-[Open the Raspberry Pi software setup →](./SOFTWARE_SETUP.md)
-
-OS setup, repository setup, Python dependencies, source checks and safe pre-run testing.
-
-## Calibration and testing
-
-[Open the calibration and testing procedure →](./CALIBRATION_AND_TESTING.md)
-
-Mechanical, IMU, camera, vision, Open Challenge, Obstacle Challenge and power checks in the order we use them.
-
-## Judge quick start
-
-[Open the judge quick start →](./JUDGE_QUICKSTART.md)
-
-A short path through the final robot, engineering decisions, software and evidence.
-
-## Engineering document
-
-[Open the final engineering PDF →](./documentation/Team_Currents_Final_Document.pdf)
-
-The full engineering record used as the source of truth for the Nationals configuration.
-
-## Testing evidence
-
-[Open the testing folder →](./testing/)
-
-Recorded challenge times, processing observations, measured power values, engineering evolution notes and the Open Challenge video.
-
-## Changelog
-
-[Open the changelog →](./CHANGELOG.md)
-
-The changes that define this Nationals configuration.
-
-## Suggested Git history
-
-[Open the commit plan →](./COMMIT_PLAN.md)
-
-Recommended commit names that make the engineering progression easy to follow.
-
-## Build-from-zero contents
-
-The build guide is intentionally organised in the same order a beginner would build the robot:
-
-1. What you are building
-2. Before buying or printing anything
-3. Parts checklist
-4. Print the CAD parts
-5. Build the mechanical drivetrain
-6. Install the electronics
-7. Install and calibrate the cameras
-8. Set up the Raspberry Pi
-9. Calibrate the robot
-10. Run the first tests
-11. Run the challenges
-12. Troubleshoot and compare results
-
+Use it to jump directly to the build guide, parts, wiring, software setup, calibration, judge quick start, engineering PDF, testing evidence and folder guides.
