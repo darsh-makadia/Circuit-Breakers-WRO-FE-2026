@@ -1,12 +1,4 @@
-**\*\*# The Dark Knight\*\***
 
-**\*\*## WRO Future Engineers 2026 — Team Current\*\***
-
-**\*\*### v1.0 — Nationals Configuration\*\***
-
-This is the GitHub repository for **\*\*\\*\\*The Dark Knight\\*\\*\*\***, our WRO Future Engineers 2026 robot.
-
-This repository contains the robot design, software, CAD/STL files, photographs, testing results and build guides for our Nationals configuration.
 # The Dark Knight
 ## WRO Future Engineers 2026 — Team Current
 ### v1.0 — Nationals Configuration
