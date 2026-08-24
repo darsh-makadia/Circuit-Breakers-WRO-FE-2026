@@ -4,7 +4,7 @@
 
 > **Engineering idea:** use the materials we have intelligently, understand their limits, and improve the whole robot instead of chasing one perfect component.
 
-<img src="./photos/front_view.png" alt="The Dark Knight - front view" width="900">
+<img src="https://raw.githubusercontent.com/Avalanfox/Team-Currents-WRO-FE-2026/main/photos/front_view.png" alt="The Dark Knight - front view" width="900">
 
 This repository is the complete working record for **The Dark Knight**. It is organised so that a judge can inspect the final robot quickly, while another team can follow the build guides and reproduce the documented configuration without having to guess what we meant.
 
@@ -52,6 +52,8 @@ The goal is not to make the reader guess. Where the final document does not spec
 | Parking | Implemented and physically tested; final alignment still needs reliable calibration |
 
 The latest engineering document is the source for the current configuration. The repository source code is the authority for the exact software implementation.
+
+> **GitHub image note:** README images use the repository's `raw.githubusercontent.com` paths so they render reliably on GitHub. The same image files are also stored in this repository.
 
 ---
 
@@ -118,6 +120,8 @@ The latest engineering document is the source for the current configuration. The
 
 The work was split by subsystem, but the robot was tested as one system. Mechanical changes affected vision and steering, and software changes required physical calibration.
 
+<img src="https://raw.githubusercontent.com/Avalanfox/Team-Currents-WRO-FE-2026/main/t-photos/team_current.png" alt="Team Current" width="700">
+
 ---
 
 # 2. What we built
@@ -138,15 +142,15 @@ The design did not start like this. We went through a LEGO-heavy prototype, a LE
 
 ## 3.1 Final robot views
 
-<img src="./photos/front_view.png" alt="Front view of The Dark Knight" width="900">
+<img src="https://raw.githubusercontent.com/Avalanfox/Team-Currents-WRO-FE-2026/main/photos/front_view.png" alt="Front view of The Dark Knight" width="900">
 
-<img src="./photos/back_view.png" alt="Rear view of The Dark Knight" width="900">
+<img src="https://raw.githubusercontent.com/Avalanfox/Team-Currents-WRO-FE-2026/main/photos/back_view.png" alt="Rear view of The Dark Knight" width="900">
 
-<img src="./photos/side_view_1.png" alt="Right side view of The Dark Knight" width="900">
+<img src="https://raw.githubusercontent.com/Avalanfox/Team-Currents-WRO-FE-2026/main/photos/side_view_1.png" alt="Right side view of The Dark Knight" width="900">
 
-<img src="./photos/side_view_2.png" alt="Left side view of The Dark Knight" width="900">
+<img src="https://raw.githubusercontent.com/Avalanfox/Team-Currents-WRO-FE-2026/main/photos/side_view_2.png" alt="Left side view of The Dark Knight" width="900">
 
-<img src="./photos/circuit_from_top.png" alt="Top view of the electronics and power layout" width="900">
+<img src="https://raw.githubusercontent.com/Avalanfox/Team-Currents-WRO-FE-2026/main/photos/circuit_from_top.png" alt="Top view of the electronics and power layout" width="900">
 
 More development photos are in [`photos/`](./photos/), including the motor, servo, differential and power-system views.
 
@@ -156,27 +160,27 @@ The printable files are in [`cad/`](./cad/). The preview renders are in [`models
 
 ### Chassis
 
-<img src="./models/chassis.png" alt="Chassis CAD model" width="800">
+<img src="https://raw.githubusercontent.com/Avalanfox/Team-Currents-WRO-FE-2026/main/models/chassis.png" alt="Chassis CAD model" width="800">
 
 ### Camera mount
 
-<img src="./models/camera_mount.png" alt="Dual camera mount CAD model" width="700">
+<img src="https://raw.githubusercontent.com/Avalanfox/Team-Currents-WRO-FE-2026/main/models/camera_mount.png" alt="Dual camera mount CAD model" width="700">
 
 ### Camera case
 
-<img src="./models/camera_case.png" alt="Camera case CAD model" width="700">
+<img src="https://raw.githubusercontent.com/Avalanfox/Team-Currents-WRO-FE-2026/main/models/camera_case.png" alt="Camera case CAD model" width="700">
 
 ### Electronics box
 
-<img src="./models/circuit_box.png" alt="Circuit box CAD model" width="700">
+<img src="https://raw.githubusercontent.com/Avalanfox/Team-Currents-WRO-FE-2026/main/models/circuit_box.png" alt="Circuit box CAD model" width="700">
 
 ### Electronics-box lid
 
-<img src="./models/circuit_box_lid.png" alt="Circuit box lid CAD model" width="700">
+<img src="https://raw.githubusercontent.com/Avalanfox/Team-Currents-WRO-FE-2026/main/models/circuit_box_lid.png" alt="Circuit box lid CAD model" width="700">
 
 ## 3.3 Electrical schematic
 
-<img src="./schematics/schematic.png" alt="Final electrical schematic" width="1000">
+<img src="https://raw.githubusercontent.com/Avalanfox/Team-Currents-WRO-FE-2026/main/schematics/schematic.png" alt="Final electrical schematic" width="1000">
 
 The enlarged schematic is the main electrical reference. It shows the Raspberry Pi, TB6612FNG, power branches, servo, MPU6050, OLED, LEDs and start button.
 
