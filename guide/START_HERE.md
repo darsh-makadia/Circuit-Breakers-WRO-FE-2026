@@ -13,7 +13,7 @@ This folder contains navigation guides for the files that actually exist in this
 5. [Source Code](../src/)
 6. [CAD / STL Models](../models/)
 7. [Robot Photos](../v-photos/)
-8. [Final Schematic](../schemes/schematic.png)
+8. [Final Schematic](../schemes/schematic.jpg)
 
 ## Repository map
 
