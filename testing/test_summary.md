@@ -23,12 +23,12 @@ Six autonomous obstacle-navigation runs were recorded:
 
 | Run | Time |
 |---:|---:|
-| 1 | 1:10 |
-| 2 | 1:09 |
-| 3 | 1:11 |
-| 4 | 1:20 |
-| 5 | 1:15 |
-| 6 | 1:13 |
+| 1 | 2:10 |
+| 2 | 2:09 |
+| 3 | 2:11 |
+| 4 | 2:20 |
+| 5 | 2:15 |
+| 6 | 2:13 |
 
 **Best recorded navigation time: 1:09**
 
