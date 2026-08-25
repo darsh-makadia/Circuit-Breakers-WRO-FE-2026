@@ -978,9 +978,15 @@ Then follow:
 **Video evidence** → [`video/`](video/)  
 **Development history** → [`CHANGELOG.md`](CHANGELOG.md)
 
+## Final Evaluated Version
+
+The final repository configuration is frozen under the GitHub release and tag `v1.0.0-nationals`. The release identifies the exact source, guides, CAD/STL files, schematic, testing evidence, photographs, and video evaluated for the WRO Future Engineers 2026 submission.
+
 ---
 
 <p align="center">
   <b>Team Current</b><br>
   <i>The Dark Knight — WRO Future Engineers 2026</i>
 </p>
+
+
