@@ -1,3 +1,4 @@
+
 # 3D Printing Settings
 
 All structural parts (chassis, camera mount, camera case, circuit box, circuit box lid, and the 36-tooth gear) are printed in PLA on an **Anycubic Kobra 2 Neo**, 0.4 mm brass nozzle.
@@ -81,4 +82,3 @@ Use this profile for any part going on the competition robot.
 | Camera case | Final Strong Print | |
 | Circuit box + lid | Final Strong Print | |
 | 36-tooth gear | Final Strong Print | Tune X-Y compensation for a tight fit against the 20-tooth LEGO gear |
-
