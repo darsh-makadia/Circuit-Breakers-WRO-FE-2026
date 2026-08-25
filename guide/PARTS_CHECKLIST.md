@@ -1,7 +1,5 @@
 # Parts checklist — The Dark Knight
 
-[← Documentation Index](./DOCUMENTATION_INDEX.md)
-
 Use this before starting a build. The quantities below are only stated where the engineering document explicitly supports them.
 
 ## Electronics
