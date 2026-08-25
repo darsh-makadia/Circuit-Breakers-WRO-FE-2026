@@ -458,8 +458,10 @@ finally:
     cv2.destroyAllWindows()
 
     time.sleep(1)
-
-    parking.run_parking(CLOCKWISE)
+    if CLOCKWISE:
+        parking.run_parking_clockwise()
+    else:
+        parking.run_parking_anticlockwise()
 
     print("TEST LAP STOPPED")
 
