@@ -65,7 +65,7 @@ For judging, the repository is organized around four things: **buildability, eng
 - [Source Code](./src/)
 - [CAD / STL Models](./models/)
 - [Robot Photos](./v-photos/)
-- [Circuit Schematic](./schemes/schematic.png)
+- [Circuit Schematic](./schemes/schematic.jpg)
 - [Video Evidence](./video/)
 
 ### Recommended judge path
@@ -112,93 +112,100 @@ We did not build the final version in one step. We changed the motor, chassis, c
 
 # 3. Robot and CAD Visual Reference
 
-These are the robot photos and CAD views used in this repository. The vehicle photos are kept in `v-photos/` and the CAD previews are in `models/`.
+All images in this section use **real files currently present in the GitHub repository**. The previous version used placeholder filenames such as `front_view.png`, `back_view.png`, `chassis.png`, etc. Those files do not exist in the repository, so GitHub could not load them.
 
 ## Robot Photos
 
-These links use the actual image files already present in `v-photos/` on the GitHub repository.
+### Final Robot — Front
+![The Dark Knight — final front view](https://raw.githubusercontent.com/darsh-makadia/Team-Current-WRO-FE-2026/main/v-photos/IMG_03_FINAL_ROBOT_FRONT.jpg)
 
-### Front View
+### Final Robot — Rear
+![The Dark Knight — final rear view](https://raw.githubusercontent.com/darsh-makadia/Team-Current-WRO-FE-2026/main/v-photos/IMG_04_FINAL_ROBOT_REAR.jpg)
 
-<a href="https://github.com/darsh-makadia/Team-Current-WRO-FE-2026/blob/main/v-photos/front_view.png"><img src="https://raw.githubusercontent.com/darsh-makadia/Team-Current-WRO-FE-2026/main/v-photos/front_view.png" alt="The Dark Knight front view" width="700"></a>
+### Final Robot — Top
+![The Dark Knight — final top view](https://raw.githubusercontent.com/darsh-makadia/Team-Current-WRO-FE-2026/main/v-photos/IMG_05_FINAL_ROBOT_TOP.jpg)
 
-### Back View
+### Side Profile 1
+![The Dark Knight — side profile 1](https://raw.githubusercontent.com/darsh-makadia/Team-Current-WRO-FE-2026/main/v-photos/SIDE_PROFILE_1.png)
 
-<a href="https://github.com/darsh-makadia/Team-Current-WRO-FE-2026/blob/main/v-photos/back_view.png"><img src="https://raw.githubusercontent.com/darsh-makadia/Team-Current-WRO-FE-2026/main/v-photos/back_view.png" alt="The Dark Knight back view" width="700"></a>
+### Side Profile 2
+![The Dark Knight — side profile 2](https://raw.githubusercontent.com/darsh-makadia/Team-Current-WRO-FE-2026/main/v-photos/SIDE_PROFILE_2.png)
 
-### Side Views
+## Mechanical and Electronics Evidence
 
-<p align="center">
-  <a href="https://github.com/darsh-makadia/Team-Current-WRO-FE-2026/blob/main/v-photos/side_view_1.png"><img src="https://raw.githubusercontent.com/darsh-makadia/Team-Current-WRO-FE-2026/main/v-photos/side_view_1.png" alt="The Dark Knight side view 1" width="45%"></a>
-  <a href="https://github.com/darsh-makadia/Team-Current-WRO-FE-2026/blob/main/v-photos/side_view_2.png"><img src="https://raw.githubusercontent.com/darsh-makadia/Team-Current-WRO-FE-2026/main/v-photos/side_view_2.png" alt="The Dark Knight side view 2" width="45%"></a>
-</p>
+### Mechanical Differential
+![Mechanical differential](https://raw.githubusercontent.com/darsh-makadia/Team-Current-WRO-FE-2026/main/v-photos/IMG_06_MECHANICAL_DIFFERENTIAL.jpg)
 
-### Motor and Steering
+### Differential Powertrain
+![Differential powertrain](https://raw.githubusercontent.com/darsh-makadia/Team-Current-WRO-FE-2026/main/v-photos/IMG_07_DIFFERENTIAL_POWERTRAIN.jpg)
 
-<p align="center">
-  <a href="https://github.com/darsh-makadia/Team-Current-WRO-FE-2026/blob/main/v-photos/motor_close_up.png"><img src="https://raw.githubusercontent.com/darsh-makadia/Team-Current-WRO-FE-2026/main/v-photos/motor_close_up.png" alt="JGB37-520 drive motor" width="45%"></a>
-  <a href="https://github.com/darsh-makadia/Team-Current-WRO-FE-2026/blob/main/v-photos/servo_close_up.png"><img src="https://raw.githubusercontent.com/darsh-makadia/Team-Current-WRO-FE-2026/main/v-photos/servo_close_up.png" alt="Steering servo" width="45%"></a>
-</p>
+### Steering Mechanism
+![Steering mechanism](https://raw.githubusercontent.com/darsh-makadia/Team-Current-WRO-FE-2026/main/v-photos/IMG_08_STEERING_MECHANISM.jpg)
 
-### Differential and Electronics
+### Motor Mount
+![Motor mount](https://raw.githubusercontent.com/darsh-makadia/Team-Current-WRO-FE-2026/main/v-photos/IMG_09_MOTOR_MOUNT.jpg)
 
-<p align="center">
-  <a href="https://github.com/darsh-makadia/Team-Current-WRO-FE-2026/blob/main/v-photos/differential.png"><img src="https://raw.githubusercontent.com/darsh-makadia/Team-Current-WRO-FE-2026/main/v-photos/differential.png" alt="Mechanical LEGO differential" width="45%"></a>
-  <a href="https://github.com/darsh-makadia/Team-Current-WRO-FE-2026/blob/main/v-photos/circuit_case_and_battery.png"><img src="https://raw.githubusercontent.com/darsh-makadia/Team-Current-WRO-FE-2026/main/v-photos/circuit_case_and_battery.png" alt="Electronics and battery" width="45%"></a>
-</p>
+### Camera Configuration
+![Camera configuration](https://raw.githubusercontent.com/darsh-makadia/Team-Current-WRO-FE-2026/main/v-photos/IMG_10_CAMERA_CONFIGURATION.jpg)
 
-### Electronics From Above
+### Power Distribution
+![Power distribution](https://raw.githubusercontent.com/darsh-makadia/Team-Current-WRO-FE-2026/main/v-photos/IMG_20_POWER_DISTRIBUTION.jpg)
 
-<a href="https://github.com/darsh-makadia/Team-Current-WRO-FE-2026/blob/main/v-photos/circuit_from_top.png"><img src="https://raw.githubusercontent.com/darsh-makadia/Team-Current-WRO-FE-2026/main/v-photos/circuit_from_top.png" alt="Electronics from above" width="800"></a>
+### Circuit Box — Open
+![Circuit box open](https://raw.githubusercontent.com/darsh-makadia/Team-Current-WRO-FE-2026/main/v-photos/IMG_21_CIRCUIT_BOX_OPEN.jpg)
 
-## CAD Models
+### Circuit Box — Closed
+![Circuit box closed](https://raw.githubusercontent.com/darsh-makadia/Team-Current-WRO-FE-2026/main/v-photos/IMG_22_CIRCUIT_BOX_CLOSED.jpg)
 
-These are the actual preview images already present in the `models/` folder.
+### Battery Setup
+![Battery setup](https://raw.githubusercontent.com/darsh-makadia/Team-Current-WRO-FE-2026/main/v-photos/IMG_23_BATTERY_SETUP.jpg)
 
-### Final Chassis
+## CAD Visual References
 
-<a href="https://github.com/darsh-makadia/Team-Current-WRO-FE-2026/blob/main/models/chassis.png"><img src="https://raw.githubusercontent.com/darsh-makadia/Team-Current-WRO-FE-2026/main/models/chassis.png" alt="Final CAD chassis" width="700"></a>
+The CAD preview images are stored in `v-photos/` as real JPG files. They are linked here instead of referencing nonexistent PNG files inside `models/`.
 
-### Final Chassis — Part 2
-
-<a href="https://github.com/darsh-makadia/Team-Current-WRO-FE-2026/blob/main/models/Chassis%20pt2%20(1).png"><img src="https://raw.githubusercontent.com/darsh-makadia/Team-Current-WRO-FE-2026/main/models/Chassis%20pt2%20(1).png" alt="Final chassis — Part 2 CAD preview" width="700"></a>
-
-### Circuit Box
-
-<a href="https://github.com/darsh-makadia/Team-Current-WRO-FE-2026/blob/main/models/circuit_box.png"><img src="https://raw.githubusercontent.com/darsh-makadia/Team-Current-WRO-FE-2026/main/models/circuit_box.png" alt="Circuit box CAD" width="700"></a>
-
-### Circuit Box Lid
-
-<a href="https://github.com/darsh-makadia/Team-Current-WRO-FE-2026/blob/main/models/circuit_box_lid.png"><img src="https://raw.githubusercontent.com/darsh-makadia/Team-Current-WRO-FE-2026/main/models/circuit_box_lid.png" alt="Circuit box lid CAD" width="700"></a>
+### Chassis
+![CAD chassis](https://raw.githubusercontent.com/darsh-makadia/Team-Current-WRO-FE-2026/main/v-photos/CAD_01_CHASSIS.jpg)
 
 ### Camera Mount
-
-<a href="https://github.com/darsh-makadia/Team-Current-WRO-FE-2026/blob/main/models/camera_mount.png"><img src="https://raw.githubusercontent.com/darsh-makadia/Team-Current-WRO-FE-2026/main/models/camera_mount.png" alt="Camera mount CAD" width="700"></a>
+![CAD camera mount](https://raw.githubusercontent.com/darsh-makadia/Team-Current-WRO-FE-2026/main/v-photos/CAD_02_CAMERA_MOUNT.jpg)
 
 ### Camera Case
+![CAD camera case](https://raw.githubusercontent.com/darsh-makadia/Team-Current-WRO-FE-2026/main/v-photos/CAD_03_CAMERA_CASE.jpg)
 
-<a href="https://github.com/darsh-makadia/Team-Current-WRO-FE-2026/blob/main/models/camera_case.png"><img src="https://raw.githubusercontent.com/darsh-makadia/Team-Current-WRO-FE-2026/main/models/camera_case.png" alt="Camera case CAD" width="600"></a>
+### Circuit Box
+![CAD circuit box](https://raw.githubusercontent.com/darsh-makadia/Team-Current-WRO-FE-2026/main/v-photos/CAD_04_CIRCUIT_BOX.jpg)
+
+### Circuit Box Lid
+![CAD circuit box lid](https://raw.githubusercontent.com/darsh-makadia/Team-Current-WRO-FE-2026/main/v-photos/CAD_05_CIRCUIT_LID.jpg)
+
+### Chassis — Part 2
+![CAD chassis part 2](https://raw.githubusercontent.com/darsh-makadia/Team-Current-WRO-FE-2026/main/v-photos/CAD_06_CHASSIS2.jpg)
+
+### 36-Tooth Gear
+![CAD 36-tooth gear](https://raw.githubusercontent.com/darsh-makadia/Team-Current-WRO-FE-2026/main/v-photos/CAD_07_36T_GEAR.jpg)
 
 ## Circuit Schematic
 
-<a href="https://github.com/darsh-makadia/Team-Current-WRO-FE-2026/blob/main/schemes/schematic.png"><img src="https://raw.githubusercontent.com/darsh-makadia/Team-Current-WRO-FE-2026/main/schemes/schematic.png" alt="Final circuit schematic" width="1000"></a>
+![Final circuit schematic](https://raw.githubusercontent.com/darsh-makadia/Team-Current-WRO-FE-2026/main/schemes/schematic.jpg)
 
 ## Final STL Files
 
-The final STL files below are the actual files currently present in the repository's `models/` folder. I have linked the real filenames instead of creating replacement `cad/` links.
+The STL links below point to **actual filenames currently present in `models/`**.
 
-| Model | Actual STL in GitHub | Purpose |
+| Model | Actual STL | Purpose |
 |---|---|---|
-| Final chassis | [`currents final chassis (1).stl`](https://github.com/darsh-makadia/Team-Current-WRO-FE-2026/blob/main/models/currents%20final%20chassis%20(1).stl) | Main custom chassis |
-| **Final chassis — Part 2** | [`currents final chassis pt2 (1) (1).stl`](https://github.com/darsh-makadia/Team-Current-WRO-FE-2026/blob/main/models/currents%20final%20chassis%20pt2%20(1)%20(1).stl) | Additional chassis component shown above |
-| Camera case | [`camera case (1) (1).stl`](https://github.com/darsh-makadia/Team-Current-WRO-FE-2026/blob/main/models/camera%20case%20(1)%20(1).stl) | Camera enclosure |
-| Circuit box | [`currents CB (1).stl`](https://github.com/darsh-makadia/Team-Current-WRO-FE-2026/blob/main/models/currents%20CB%20(1).stl) | Electronics enclosure |
-| Circuit box lid | [`currents CB LID (1).stl`](https://github.com/darsh-makadia/Team-Current-WRO-FE-2026/blob/main/models/currents%20CB%20LID%20(1).stl) | Electronics enclosure lid |
+| 36-tooth gear | [`36t gear.stl`](https://github.com/darsh-makadia/Team-Current-WRO-FE-2026/blob/main/models/36t%20gear.stl) | Custom drive gear |
+| Circuit box | [`Circuit_Box.stl`](https://github.com/darsh-makadia/Team-Current-WRO-FE-2026/blob/main/models/Circuit_Box.stl) | Electronics enclosure |
+| Circuit box lid | [`Circuit_Box_LID.stl`](https://github.com/darsh-makadia/Team-Current-WRO-FE-2026/blob/main/models/Circuit_Box_LID.stl) | Electronics enclosure lid |
+| Camera case | [`camera case.stl`](https://github.com/darsh-makadia/Team-Current-WRO-FE-2026/blob/main/models/camera%20case.stl) | Camera enclosure |
+| Chassis | [`chassis.stl`](https://github.com/darsh-makadia/Team-Current-WRO-FE-2026/blob/main/models/chassis.stl) | Main custom chassis |
+| Chassis — Part 2 | [`chassis pt2.stl`](https://github.com/darsh-makadia/Team-Current-WRO-FE-2026/blob/main/models/chassis%20pt2.stl) | Additional chassis component |
+| Dual camera mount | [`dual_camera_mount.stl`](https://github.com/darsh-makadia/Team-Current-WRO-FE-2026/blob/main/models/dual_camera_mount.stl) | Dual-camera mounting structure |
 
-> **Note:** GitHub does not need the STL to be rendered inside the README. Clicking each filename above opens the real STL file stored in `models/`.
+> **Important:** GitHub renders these STL files as downloadable model files rather than as README images. The image previews above are the repository's actual JPG/PNG evidence files.
 
 ---
-
 # 4. Final Robot Specifications
 
 | Specification | Final value |
@@ -655,7 +662,7 @@ Use [`BUILD_FROM_ZERO.md`](./guide/BUILD_FROM_ZERO.md) together with the CAD/STL
 
 **Step 3 — Wiring**
 
-Use [`WIRING_AND_PIN_REFERENCE.md`](./guide/WIRING_AND_PIN_REFERENCE.md) and the final [schematic](./schemes/schematic.png).
+Use [`WIRING_AND_PIN_REFERENCE.md`](./guide/WIRING_AND_PIN_REFERENCE.md) and the final [schematic](./schemes/schematic.jpg).
 
 **Step 4 — Software**
 
