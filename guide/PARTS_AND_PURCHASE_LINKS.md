@@ -56,4 +56,3 @@ Used in the differential, external gearing, and drivetrain axle assembly. Links 
 ## Notes
 
 - The **Pi rail's buck converter (5V/5A)** doesn't have a confirmed purchase link yet — flagged above so it isn't lost track of. Add the link once sourced/confirmed.
-- The IMU and OLED links are placeholders — fill in once confirmed, since these are core electronics a rebuilding team would need.
