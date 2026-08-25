@@ -7,7 +7,7 @@ This folder contains navigation guides for the files that actually exist in this
 ## Recommended order
 
 1. [Build From Zero](./BUILD_FROM_ZERO.md)
-2. [Parts Checklist](./PARTS_CHECKLIST.md)
+2. [Parts Checklist](./PARTS_AND_PURCHASE_LINKS.md)
 3. [Wiring & Pin Reference](./WIRING_AND_PIN_REFERENCE.md)
 4. [Software Setup](./SOFTWARE_SETUP.md)
 5. [Source Code](../src/)
