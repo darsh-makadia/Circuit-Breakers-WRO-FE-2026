@@ -52,7 +52,3 @@ Used in the differential, external gearing, and drivetrain axle assembly. Links 
 | Smooth pin | [BrickLink](https://www.bricklink.com/v2/catalog/catalogitem.page?P=3673) |
 | Universal joint | [BrickLink](https://www.bricklink.com/v2/catalog/catalogitem.page?P=62520c01) |
 | LEGO Technic wheel 43×14, medium azure tire | [BrickLink](https://www.bricklink.com/v2/catalog/catalogitem.page?P=65834pb02) |
-
-## Notes
-
-- The **Pi rail's buck converter (5V/5A)** doesn't have a confirmed purchase link yet — flagged above so it isn't lost track of. Add the link once sourced/confirmed.
