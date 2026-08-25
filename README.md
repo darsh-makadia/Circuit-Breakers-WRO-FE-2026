@@ -1,802 +1,986 @@
-# The Dark Knight
-## WRO Future Engineers 2026 — Team Current
-### v1.0 — Nationals Configuration
+# The Dark Knight — Team Current | WRO Future Engineers 2026
 
-This is the GitHub repository for **The Dark Knight**, our WRO Future Engineers 2026 robot.
+> **A reproducible self-driving vehicle developed for WRO Future Engineers 2026**
 
-We have kept the final robot information, code, CAD, photos, testing files and engineering documentation here so that everything for our Nationals version is in one place.
-
-For judging, the repository is organized around four things: **buildability, engineering decisions, software traceability and test evidence**. The files linked below are the actual project files used to document and reproduce the Nationals configuration.
-
-## Table of Contents
-
-- [Repository Index](#repository-index)
-- [1. Team](#1-team)
-- [2. Final Robot Overview](#2-final-robot-overview)
-- [3. Robot and CAD Visual Reference](#3-robot-and-cad-visual-reference)
-  - [Robot Photos](#robot-photos)
-  - [CAD Models](#cad-models)
-  - [Circuit Schematic](#circuit-schematic)
-  - [Final STL Files](#final-stl-files)
-- [4. Final Robot Specifications](#4-final-robot-specifications)
-- [5. Mechanical Design](#5-mechanical-design)
-- [6. Cameras and Perception](#6-cameras-and-perception)
-- [7. Computer Vision](#7-computer-vision)
-- [8. Steering](#8-steering)
-- [9. Software Architecture](#9-software-architecture)
-- [10. Open Challenge](#10-open-challenge)
-- [11. Obstacle Challenge](#11-obstacle-challenge)
-- [12. Parking and MPU6050](#12-parking-and-mpu6050)
-- [13. Power Architecture](#13-power-architecture)
-- [14. Measured Power Results](#14-measured-power-results)
-- [15. Engineering Evolution](#15-engineering-evolution)
-- [16. Recorded Challenge Performance](#16-recorded-challenge-performance)
-- [17. Known Development History](#17-known-development-history)
-- [18. Repository Structure](#18-repository-structure)
-- [19. Reproducibility](#19-reproducibility)
-- [20. Evidence Included in This Repository](#20-evidence-included-in-this-repository)
-- [21. Final Nationals Configuration Verification](#21-final-nationals-configuration-verification)
-- [22. Version](#22-version)
-
-## Repository Index
-
-### Start here
-
-1. [Start Here](./guide/START_HERE.md)
-2. [Build From Zero](./guide/BUILD_FROM_ZERO.md)
-3. [Parts Checklist](./guide/PARTS_CHECKLIST.md)
-4. [Wiring and Pin Reference](./guide/WIRING_AND_PIN_REFERENCE.md)
-5. [Software Setup](./guide/SOFTWARE_SETUP.md)
-
-### Engineering evidence
-
-- [Power & Sensor Evidence](./guide/POWER_AND_SENSOR_EVIDENCE.md)
-- [Reproducibility Evidence](./guide/REPRODUCIBILITY.md)
-- [Changelog](./CHANGELOG.md)
-- [Testing Evidence](./testing/)
-- [Open Challenge Video](./testing/Open_Challenge.mp4)
-- [Power Measurements](./testing/power_measurements.csv)
-- [Test Results](./testing/test_results.csv)
-- [Test Summary](./testing/test_summary.md)
-- [Engineering Evolution](./testing/engineering_evolution.md)
-
-### Robot files
-
-- [Source Code](./src/)
-- [CAD / STL Models](./models/)
-- [Robot Photos](./v-photos/)
-- [Circuit Schematic](./schemes/schematic.jpg)
-- [Video Evidence](./video/)
-
-### Recommended judge path
-
-**Start Here → Build From Zero → Parts Checklist → Wiring Reference → Software Setup → README engineering sections → Testing Evidence → Source Code → CAD/STL → Changelog**
+[![Repository](https://img.shields.io/badge/GitHub-Team--Current--WRO--FE--2026-black?logo=github)](https://github.com/darsh-makadia/Team-Current-WRO-FE-2026)
+[![Platform](https://img.shields.io/badge/Platform-Raspberry%20Pi%205-c51a4a?logo=raspberrypi&logoColor=white)](#hardware-and-system-overview)
+[![Language](https://img.shields.io/badge/Language-Python-3776ab?logo=python&logoColor=white)](#software-architecture)
+[![Competition](https://img.shields.io/badge/Competition-WRO%20Future%20Engineers%202026-orange)](#wro-challenges)
 
 ---
 
-# 1. Team
+## Contents
 
-| Name | Role |
+- [About the Project](#about-the-project)
+- [The Team](#the-team)
+- [Final Robot](#final-robot)
+- [Hardware and System Overview](#hardware-and-system-overview)
+- [Mechanical Design](#mechanical-design)
+- [Drivetrain and Differentials](#drivetrain-and-differentials)
+- [Steering](#steering)
+- [Camera System and Perception](#camera-system-and-perception)
+- [Computer Vision Pipeline](#computer-vision-pipeline)
+- [Software Architecture](#software-architecture)
+- [Open Challenge](#open-challenge)
+- [Obstacle Challenge](#obstacle-challenge)
+- [Parking Development](#parking-development)
+- [Power and Electronics](#power-and-electronics)
+- [Testing and Validation](#testing-and-validation)
+- [Engineering Evolution](#engineering-evolution)
+- [Quick Start](#quick-start)
+- [Repository Structure](#repository-structure)
+- [Reproducibility](#reproducibility)
+- [Evidence Index](#evidence-index)
+- [Configuration Consistency](#configuration-consistency)
+- [Version and Release](#version-and-release)
+
+---
+
+# About the Project
+
+**The Dark Knight** is Team Current's WRO Future Engineers 2026 self-driving vehicle. The project combines a custom mechanical platform, Raspberry Pi-based control, dual Raspberry Pi Camera Module 3 cameras, colour-based computer vision, an MPU6050 IMU, custom 3D-printed components, and Python software for autonomous navigation.
+
+The robot was developed through multiple mechanical and software iterations rather than as a single fixed design. The repository preserves the final configuration together with the engineering evidence needed to understand how the robot was built, why important design decisions were made, and how the resulting system was tested.
+
+The repository is organised as a connected engineering record:
+
+> **Problem → hypothesis → change → test → measured result → decision**
+
+A judge or another team can begin with this README, follow the construction and setup guides, inspect the source code and CAD/STL files, and then review the photographs, measurements, testing records, engineering evolution, and video evidence.
+
+**Repository:** [Team-Current-WRO-FE-2026](https://github.com/darsh-makadia/Team-Current-WRO-FE-2026)
+
+---
+
+# The Team
+
+<table>
+<tr>
+<td width="25%" align="center">
+
+<img src="t-photos/Darsh_Individual.png" width="180" alt="Darsh Makadia">
+
+### Darsh Makadia
+**Team Member**
+
+Mechanical design, hardware integration, software development, testing, and overall robot integration.
+
+</td>
+<td width="25%" align="center">
+
+<img src="t-photos/Ehan_Individual.png" width="180" alt="Ehan Mansuri">
+
+### Ehan Mansuri
+**Team Member**
+
+CAD design, mechanical development, manufactured components, and robot design integration.
+
+</td>
+<td width="25%" align="center">
+
+<img src="t-photos/sunil_sir.jpg" width="180" alt="Sunil Solanki">
+
+### Sunil Solanki
+**Coach**
+
+Electrical systems, mechanical guidance, software development, and technical integration guidance.
+
+</td>
+<td width="25%" align="center">
+
+<img src="t-photos/shyam_sir.jpg" width="180" alt="Shyam Satasiya">
+
+### Shyam Satasiya
+**Coach**
+
+CAD guidance and support for mechanical design and manufactured components.
+
+</td>
+</tr>
+</table>
+
+<p align="center">
+<img src="t-photos/Team.png" width="650" alt="Team Current">
+</p>
+
+---
+
+# Final Robot
+
+The final robot uses a custom 3D-printed chassis and integrates the drivetrain, steering system, cameras, Raspberry Pi, motor electronics, IMU, battery, and electronics enclosure into a compact vehicle.
+
+<table>
+<tr>
+<td width="33%" align="center">
+<img src="v-photos/IMG_03_FINAL_ROBOT_FRONT.jpg" width="300" alt="Final robot front view">
+<br><b>Front view</b>
+</td>
+<td width="33%" align="center">
+<img src="v-photos/IMG_04_FINAL_ROBOT_REAR.jpg" width="300" alt="Final robot rear view">
+<br><b>Rear view</b>
+</td>
+<td width="33%" align="center">
+<img src="v-photos/IMG_05_FINAL_ROBOT_TOP.jpg" width="300" alt="Final robot top view">
+<br><b>Top view</b>
+</td>
+</tr>
+</table>
+
+<table>
+<tr>
+<td width="50%" align="center">
+<img src="v-photos/SIDE_PROFILE_1.png" width="420" alt="Robot side profile 1">
+<br><b>Side profile 1</b>
+</td>
+<td width="50%" align="center">
+<img src="v-photos/SIDE_PROFILE_2.png" width="420" alt="Robot side profile 2">
+<br><b>Side profile 2</b>
+</td>
+</tr>
+</table>
+
+## Development history
+
+The final configuration was reached through earlier prototypes.
+
+<table>
+<tr>
+<td width="50%" align="center">
+<img src="v-photos/IMG_01_V1_LEGO_ROBOT.jpg" width="400" alt="Version 1 LEGO development robot">
+<br><b>Version 1 — LEGO-heavy development platform</b>
+</td>
+<td width="50%" align="center">
+<img src="v-photos/IMG_02_V2_HYBRID_ROBOT.JPG" width="400" alt="Version 2 hybrid robot">
+<br><b>Version 2 — LEGO/CAD hybrid platform</b>
+</td>
+</tr>
+</table>
+
+The progression from a LEGO-heavy prototype to a hybrid platform and then to the final custom chassis is documented in [`testing/engineering_evolution.md`](testing/engineering_evolution.md).
+
+---
+
+# Hardware and System Overview
+
+The robot's main hardware architecture combines:
+
+| Subsystem | Implementation |
 |---|---|
-| **Darsh Makadia** | Programming & Electronics |
-| **Ehan Mansuri** | Mechanical Design & 3D Modelling |
-| **Sunil Solanki** | Coach |
+| Main computer | Raspberry Pi 5 |
+| Cameras | Two Raspberry Pi Camera Module 3 cameras |
+| Vision processing | OpenCV-based colour segmentation and contour analysis |
+| Heading sensing | MPU6050 through I2C |
+| Drive | JGB37-520 DC drive motor |
+| Steering | Servo-operated steering mechanism |
+| Drivetrain | Central drive arrangement with two axle differentials |
+| Battery | 11.1 V battery system |
+| Custom components | 3D-printed chassis, camera mount/case, electronics enclosure, and 36-tooth gear |
 
-**Robot:** The Dark Knight
-**Team:** Team Current
-**Competition:** WRO Future Engineers 2026
-
----
-
-# 2. Final Robot Overview
-
-The Dark Knight is our autonomous four-wheel-drive robot for WRO Future Engineers.
-
-The final robot uses:
-
-- Raspberry Pi 5 (4 GB)
-- Two Raspberry Pi Camera Module 3 cameras
-- JGB37-520 DC motor, 12 V, 600 RPM
-- Servo steering
-- MPU6050 IMU
-- TB6612FNG motor driver
-- 3S 2200 mAh LiPo battery
-- CAD/PLA printed parts
-- LEGO Technic drivetrain parts
-- Two mechanical LEGO differentials, one per axle
-- Central driveshaft
-
-We did not build the final version in one step. We changed the motor, chassis, camera setup, power system and software after testing the robot and seeing what was actually causing problems.
+The exact components and purchase references are documented in [`guide/PARTS_AND_PURCHASE_LINKS.md`](guide/PARTS_AND_PURCHASE_LINKS.md). The construction process is documented in [`guide/BUILD_FROM_ZERO.md`](guide/BUILD_FROM_ZERO.md).
 
 ---
 
-# 3. Robot and CAD Visual Reference
+# Mechanical Design
 
-All images in this section use **real files currently present in the GitHub repository**. The previous version used placeholder filenames such as `front_view.png`, `back_view.png`, `chassis.png`, etc. Those files do not exist in the repository, so GitHub could not load them.
+The final vehicle uses a custom printed chassis to provide a dedicated structure for the drivetrain, steering system, electronics, cameras, and battery.
 
-## Robot Photos
+## CAD and manufactured components
 
-### Final Robot — Front
-![The Dark Knight — final front view](https://raw.githubusercontent.com/darsh-makadia/Team-Current-WRO-FE-2026/main/v-photos/IMG_03_FINAL_ROBOT_FRONT.jpg)
+The final STL files are stored in [`models/`](models/). Their corresponding CAD previews are shown below.
 
-### Final Robot — Rear
-![The Dark Knight — final rear view](https://raw.githubusercontent.com/darsh-makadia/Team-Current-WRO-FE-2026/main/v-photos/IMG_04_FINAL_ROBOT_REAR.jpg)
+<table>
+<tr>
+<td width="50%" align="center">
+<img src="v-photos/CAD_01_CHASSIS.jpg" width="400" alt="CAD chassis">
+<br><a href="models/chassis.stl"><b>chassis.stl</b></a>
+</td>
+<td width="50%" align="center">
+<img src="v-photos/CAD_06_CHASSIS2.jpg" width="400" alt="CAD second chassis component">
+<br><a href="models/chassis%20pt2.stl"><b>chassis pt2.stl</b></a>
+</td>
+</tr>
+<tr>
+<td width="50%" align="center">
+<img src="v-photos/CAD_02_CAMERA_MOUNT.jpg" width="400" alt="CAD dual camera mount">
+<br><a href="models/dual_camera_mount.stl"><b>dual_camera_mount.stl</b></a>
+</td>
+<td width="50%" align="center">
+<img src="v-photos/CAD_03_CAMERA_CASE.jpg" width="400" alt="CAD camera case">
+<br><a href="models/camera%20case.stl"><b>camera case.stl</b></a>
+</td>
+</tr>
+<tr>
+<td width="50%" align="center">
+<img src="v-photos/CAD_04_CIRCUIT_BOX.jpg" width="400" alt="CAD circuit box">
+<br><a href="models/Circuit_Box.stl"><b>Circuit_Box.stl</b></a>
+</td>
+<td width="50%" align="center">
+<img src="v-photos/CAD_05_CIRCUIT_LID.jpg" width="400" alt="CAD circuit box lid">
+<br><a href="models/Circuit_Box_LID.stl"><b>Circuit_Box_LID.stl</b></a>
+</td>
+</tr>
+<tr>
+<td colspan="2" align="center">
+<img src="v-photos/CAD_07_36T_GEAR.jpg" width="400" alt="CAD 36 tooth gear">
+<br><a href="models/36t%20gear.stl"><b>36t gear.stl</b></a>
+</td>
+</tr>
+</table>
 
-### Final Robot — Top
-![The Dark Knight — final top view](https://raw.githubusercontent.com/darsh-makadia/Team-Current-WRO-FE-2026/main/v-photos/IMG_05_FINAL_ROBOT_TOP.jpg)
-
-### Side Profile 1
-![The Dark Knight — side profile 1](https://raw.githubusercontent.com/darsh-makadia/Team-Current-WRO-FE-2026/main/v-photos/SIDE_PROFILE_1.png)
-
-### Side Profile 2
-![The Dark Knight — side profile 2](https://raw.githubusercontent.com/darsh-makadia/Team-Current-WRO-FE-2026/main/v-photos/SIDE_PROFILE_2.png)
-
-## Mechanical and Electronics Evidence
-
-### Mechanical Differential
-![Mechanical differential](https://raw.githubusercontent.com/darsh-makadia/Team-Current-WRO-FE-2026/main/v-photos/IMG_06_MECHANICAL_DIFFERENTIAL.jpg)
-
-### Differential Powertrain
-![Differential powertrain](https://raw.githubusercontent.com/darsh-makadia/Team-Current-WRO-FE-2026/main/v-photos/IMG_07_DIFFERENTIAL_POWERTRAIN.jpg)
-
-### Steering Mechanism
-![Steering mechanism](https://raw.githubusercontent.com/darsh-makadia/Team-Current-WRO-FE-2026/main/v-photos/IMG_08_STEERING_MECHANISM.jpg)
-
-### Motor Mount
-![Motor mount](https://raw.githubusercontent.com/darsh-makadia/Team-Current-WRO-FE-2026/main/v-photos/IMG_09_MOTOR_MOUNT.jpg)
-
-### Camera Configuration
-![Camera configuration](https://raw.githubusercontent.com/darsh-makadia/Team-Current-WRO-FE-2026/main/v-photos/IMG_10_CAMERA_CONFIGURATION.jpg)
-
-### Power Distribution
-![Power distribution](https://raw.githubusercontent.com/darsh-makadia/Team-Current-WRO-FE-2026/main/v-photos/IMG_20_POWER_DISTRIBUTION.jpg)
-
-### Circuit Box — Open
-![Circuit box open](https://raw.githubusercontent.com/darsh-makadia/Team-Current-WRO-FE-2026/main/v-photos/IMG_21_CIRCUIT_BOX_OPEN.jpg)
-
-### Circuit Box — Closed
-![Circuit box closed](https://raw.githubusercontent.com/darsh-makadia/Team-Current-WRO-FE-2026/main/v-photos/IMG_22_CIRCUIT_BOX_CLOSED.jpg)
-
-### Battery Setup
-![Battery setup](https://raw.githubusercontent.com/darsh-makadia/Team-Current-WRO-FE-2026/main/v-photos/IMG_23_BATTERY_SETUP.jpg)
-
-## CAD Visual References
-
-The CAD preview images are stored in `v-photos/` as real JPG files. They are linked here instead of referencing nonexistent PNG files inside `models/`.
-
-### Chassis
-![CAD chassis](https://raw.githubusercontent.com/darsh-makadia/Team-Current-WRO-FE-2026/main/v-photos/CAD_01_CHASSIS.jpg)
-
-### Camera Mount
-![CAD camera mount](https://raw.githubusercontent.com/darsh-makadia/Team-Current-WRO-FE-2026/main/v-photos/CAD_02_CAMERA_MOUNT.jpg)
-
-### Camera Case
-![CAD camera case](https://raw.githubusercontent.com/darsh-makadia/Team-Current-WRO-FE-2026/main/v-photos/CAD_03_CAMERA_CASE.jpg)
-
-### Circuit Box
-![CAD circuit box](https://raw.githubusercontent.com/darsh-makadia/Team-Current-WRO-FE-2026/main/v-photos/CAD_04_CIRCUIT_BOX.jpg)
-
-### Circuit Box Lid
-![CAD circuit box lid](https://raw.githubusercontent.com/darsh-makadia/Team-Current-WRO-FE-2026/main/v-photos/CAD_05_CIRCUIT_LID.jpg)
-
-### Chassis — Part 2
-![CAD chassis part 2](https://raw.githubusercontent.com/darsh-makadia/Team-Current-WRO-FE-2026/main/v-photos/CAD_06_CHASSIS2.jpg)
-
-### 36-Tooth Gear
-![CAD 36-tooth gear](https://raw.githubusercontent.com/darsh-makadia/Team-Current-WRO-FE-2026/main/v-photos/CAD_07_36T_GEAR.jpg)
-
-## Circuit Schematic
-
-![Final circuit schematic](https://raw.githubusercontent.com/darsh-makadia/Team-Current-WRO-FE-2026/main/schemes/schematic.jpg)
-
-## Final STL Files
-
-The STL links below point to **actual filenames currently present in `models/`**.
-
-| Model | Actual STL | Purpose |
-|---|---|---|
-| 36-tooth gear | [`36t gear.stl`](https://github.com/darsh-makadia/Team-Current-WRO-FE-2026/blob/main/models/36t%20gear.stl) | Custom drive gear |
-| Circuit box | [`Circuit_Box.stl`](https://github.com/darsh-makadia/Team-Current-WRO-FE-2026/blob/main/models/Circuit_Box.stl) | Electronics enclosure |
-| Circuit box lid | [`Circuit_Box_LID.stl`](https://github.com/darsh-makadia/Team-Current-WRO-FE-2026/blob/main/models/Circuit_Box_LID.stl) | Electronics enclosure lid |
-| Camera case | [`camera case.stl`](https://github.com/darsh-makadia/Team-Current-WRO-FE-2026/blob/main/models/camera%20case.stl) | Camera enclosure |
-| Chassis | [`chassis.stl`](https://github.com/darsh-makadia/Team-Current-WRO-FE-2026/blob/main/models/chassis.stl) | Main custom chassis |
-| Chassis — Part 2 | [`chassis pt2.stl`](https://github.com/darsh-makadia/Team-Current-WRO-FE-2026/blob/main/models/chassis%20pt2.stl) | Additional chassis component |
-| Dual camera mount | [`dual_camera_mount.stl`](https://github.com/darsh-makadia/Team-Current-WRO-FE-2026/blob/main/models/dual_camera_mount.stl) | Dual-camera mounting structure |
-
-> **Important:** GitHub renders these STL files as downloadable model files rather than as README images. The image previews above are the repository's actual JPG/PNG evidence files.
-
----
-# 4. Final Robot Specifications
-
-| Specification | Final value |
-|---|---:|
-| Length | **24 cm** |
-| Width | **13 cm** |
-| Height | **27.5 cm** |
-| Mass | **863 g** |
-| Wheel diameter | **43.2 mm** |
-| Gear ratio | **1.8:1** |
-| Drive configuration | **4WD** |
-| Differential | **Two mechanical LEGO differentials, one per axle** |
-| Drive motor | **JGB37-520 DC 12 V, 600 RPM** |
-| Steering | **Servo steering** |
-| Main computer | **Raspberry Pi 5, 4 GB** |
-| Cameras | **2 × Raspberry Pi Camera Module 3** |
-| Orientation sensor | **MPU6050** |
-| Motor driver | **TB6612FNG** |
-| Battery | **3S LiPo, 2200 mAh** |
-| Structural material | **PLA / CAD printed parts** |
+Manufacturing settings for the printed components are documented in [`guide/3D_PRINTING_SETTINGS.md`](guide/3D_PRINTING_SETTINGS.md).
 
 ---
 
-# 5. Mechanical Design
+# Drivetrain and Differentials
 
-## 5.1 CAD + LEGO hybrid architecture
+The drivetrain uses a central mechanical power path that transfers motion to both axle assemblies. The system includes **two mechanical differentials**, one associated with each axle.
 
-We used CAD and LEGO for different parts of the robot instead of trying to make everything from one system.
+<p align="center">
+<img src="v-photos/IMG_06_MECHANICAL_DIFFERENTIAL.jpg" width="480" alt="Mechanical differential">
+</p>
 
-**CAD/PLA:**
-- chassis
-- electronics/circuit box
-- camera mount
-- camera case
-- custom mounting parts
-- 36-tooth gear
+The central drivetrain arrangement transfers power through the chassis and distributes it to the axle assemblies.
 
-**LEGO Technic:**
-- drivetrain components
-- mechanical differential
-- gears
-- shafts and connectors
-- other small mechanical parts
+<p align="center">
+<img src="v-photos/IMG_07_DIFFERENTIAL_POWERTRAIN.jpg" width="700" alt="Differential powertrain">
+</p>
 
-This made it easier to keep the drivetrain modular while still getting a rigid chassis and proper mounting points for the electronics and cameras.
+This design allows the drive system to transmit power to all four wheels while retaining differential action at the axle assemblies.
 
-## 5.2 Four-wheel drive
+The final drivetrain and motor configuration should be interpreted together with:
 
-The final robot is **4WD**.
-
-One drive motor sends power through the central driveshaft and the mechanical drivetrain. The LEGO mechanical differential lets the wheels on the left and right sides rotate at different speeds when the robot turns.
-
-We kept the mechanical differential instead of making an electronic differential because the drivetrain had to use a mechanical solution.
-
-The 4WD setup was especially useful during the large steering angles used in parking because the steered wheels are also powered.
-
-## 5.3 Gear ratio
-
-The final external gear pair uses a 36-tooth gear and a 20-tooth gear, giving a **1.8:1** tooth-count ratio.
-
-We chose this setup because, for our robot, the extra wheel speed was more useful than having the maximum possible torque.
-
-In our recorded speed test, the robot travelled **3 m in 2.25 s**, which is about **1.33 m/s (4.8 km/h)**.
+- [`guide/BUILD_FROM_ZERO.md`](guide/BUILD_FROM_ZERO.md)
+- [`guide/PARTS_AND_PURCHASE_LINKS.md`](guide/PARTS_AND_PURCHASE_LINKS.md)
+- [`testing/engineering_evolution.md`](testing/engineering_evolution.md)
 
 ---
 
-# 6. Cameras and Perception
+# Steering
 
-The final robot uses **two Raspberry Pi Camera Module 3 cameras**.
+Steering is controlled by a servo-driven mechanical linkage. The steering system was calibrated on the physical robot and integrated with the vehicle-control functions in [`src/drive.py`](src/drive.py).
 
-### Front camera
+<p align="center">
+<img src="v-photos/IMG_08_STEERING_MECHANISM.jpg" width="700" alt="Steering mechanism">
+</p>
 
-Used for:
-- track/line perception
-- blue and orange direction markers
-- red obstacles
-- green obstacles
+The software provides steering limits, movement commands, stop behaviour, and GPIO cleanup. Final steering values are controlled by the source configuration and should be verified against the physical robot before a new reproduction or competition configuration is called final.
 
-Documented setup:
-- **1480 × 520**
-- target **60 FPS**
-- lens-centre height approximately **25.0 cm**
+The drive motor mounting arrangement is shown below.
 
-### Rear / parking camera
-
-Used mainly for:
-- parking-area perception
-- parking marker detection
-- the parking sequence
-
-Documented setup:
-- **640 × 480**
-- target **60 FPS**
-- lens-centre height approximately **23.5 cm**
-
-The two-camera setup was added because the front camera is needed for normal driving while parking needs useful information from behind the robot.
+<p align="center">
+<img src="v-photos/IMG_09_MOTOR_MOUNT.jpg" width="650" alt="Motor mount">
+</p>
 
 ---
 
-# 7. Computer Vision
+# Camera System and Perception
 
-We use **OpenCV** with both **HSV and LAB** colour information.
+The robot uses two Raspberry Pi Camera Module 3 cameras for different perception tasks.
 
-For the documented colour/obstacle confidence calculation, the final document gives:
+<p align="center">
+<img src="v-photos/IMG_10_CAMERA_CONFIGURATION.jpg" width="700" alt="Camera configuration">
+</p>
 
-**Confidence = 0.65 × HSV + 0.20 × LAB + 0.15 × geometry**
+The camera mounting system was adjusted during development to obtain useful fields of view for challenge navigation and parking.
 
-The general process is:
+<p align="center">
+<img src="v-photos/IMG_11_CAMERA_MOUNT_ADJUSTMENT.jpg" width="650" alt="Camera mount adjustment">
+</p>
 
-1. capture the camera frame;
-2. create colour masks;
-3. clean the masks with morphology;
-4. find contours;
-5. reject contours below the configured area;
-6. check colour coverage and similarity;
-7. check contour geometry and position;
-8. calculate confidence;
-9. choose the useful target for steering.
+## Camera evidence
 
-The software handles:
+<table>
+<tr>
+<td width="33%" align="center">
+<img src="v-photos/IMG_12_CAMERA_VIEW_FORWARD.jpg" width="300" alt="Forward camera view">
+<br><b>Forward navigation view</b>
+</td>
+<td width="33%" align="center">
+<img src="v-photos/IMG_13_CAMERA_VIEW_OBSTACLE.jpg" width="300" alt="Obstacle camera view">
+<br><b>Obstacle perception view</b>
+</td>
+<td width="33%" align="center">
+<img src="v-photos/IMG_14_CAMERA_VIEW_PARKING.jpg" width="300" alt="Parking camera view">
+<br><b>Parking perception view</b>
+</td>
+</tr>
+</table>
 
-- black track boundaries
-- blue markers
-- orange markers
-- green obstacles
-- red obstacles
-- magenta/purple parking structures
+Both challenge programs currently use the front camera at **1480 × 520 pixels**. The configured target and the measured processing performance are kept separate: the target camera rate is not presented as identical to the observed end-to-end processing rate.
 
-The thresholds are calibration values. They were changed during testing and should only be changed again after testing on the real robot.
-
----
-
-# 8. Steering
-
-The final software uses these steering values:
-
-| Setting | Value |
-|---|---:|
-| Centre | **75°** |
-| Minimum | **35°** |
-| Maximum | **115°** |
-
-The drive code clamps requested steering angles to this range.
-
-These are the values used for the final configuration and the values documented in the engineering PDF.
+Camera and sensor configuration evidence is documented in [`guide/POWER_AND_SENSOR_EVIDENCE.md`](guide/POWER_AND_SENSOR_EVIDENCE.md).
 
 ---
 
-# 9. Software Architecture
+# Computer Vision Pipeline
 
-The software is written in **Python** and runs on the Raspberry Pi 5.
+The vision implementation is based primarily on direct colour segmentation and contour analysis using OpenCV.
 
-| File | What it does |
-|---|---|
-| `config.py` | Main calibration and configuration values |
-| `drive.py` | Motor and steering control |
-| `heading.py` | MPU6050 heading and calibration |
-| `vision.py` | Camera and colour/target processing |
-| `openVision.py` | Open Challenge vision processing |
-| `open_challenge.py` | Open Challenge navigation and marker/lap logic |
-| `obstacle_challenge.py` | Obstacle detection and avoidance |
-| `parking.py` | Parking state machine and IMU-guided turns |
-| `run_open.py` | Open Challenge launcher |
-| `run_obstacle.py` | Obstacle Challenge launcher |
-
-The current code also has safety handling for IMU/I2C errors, bounded IMU turns, obstacle confirmation and safe stopping.
-
----
-
-# 10. Open Challenge
-
-## 10.1 Navigation
-
-The final navigation uses direction-dependent wall following:
-
-- **Clockwise → right wall**
-- **Anticlockwise → left wall**
-
-We used this approach because relying on the centre between two walls became unreliable when one wall temporarily disappeared from the camera view.
-
-## 10.2 Direction markers
-
-The first valid direction marker tells the robot which way the track is running:
-
-- **Blue → Anticlockwise**
-- **Orange → Clockwise**
-
-After the direction is known, the program counts the marker colour for that direction.
-
-## 10.3 Marker counting
-
-Final Open Challenge settings:
-
-| Parameter | Value |
-|---|---:|
-| `KP` | **0.013** |
-| Laps | **3** |
-| Relevant crossings per lap | **4** |
-| Total counted crossings | **12** |
-| Marker cooldown | **1.0 s** |
-| Servo centre | **75°** |
-| Servo limits | **35°–115°** |
-| Initial motor PWM | **40** |
-
-The marker counter uses rising-edge detection:
+The shared processing sequence is:
 
 ```text
-not detected → detected = count once
-detected → detected = do not count again
-detected → disappears = ready for next marker
+Camera frame
+    ↓
+HSV conversion
+    ↓
+Colour mask
+    ↓
+Morphological opening/closing
+    ↓
+Contour extraction
+    ↓
+Filtering / confidence logic
+    ↓
+Target point
 ```
 
-This was added because the same physical marker can stay visible for several camera frames.
+## Open Challenge processing
 
-## 10.4 Recorded results
+The Open Challenge uses the relevant camera image and marker-processing logic to determine direction, detect and count markers, support wall following, and determine when the configured challenge sequence is complete.
 
-The six recorded Open Challenge runs were:
+The Open Challenge-specific vision implementation is contained in [`src/openVision.py`](src/openVision.py), while the main challenge program is [`src/Current_Open_8_22.py`](src/Current_Open_8_22.py).
 
-**32, 30, 28, 28, 28, 28 seconds**
+## Obstacle Challenge processing
 
-**Best recorded time: 28 seconds.**
+The Obstacle Challenge uses colour segmentation and contour processing to identify coloured obstacles and calculate the target information used by the challenge-control logic.
 
-The final four recorded runs were all 28 seconds under the tested conditions.
+A black segmentation mask is used as evidence for track/boundary isolation:
 
----
+<p align="center">
+<img src="v-photos/IMG_15_BLACK_MASK.jpg" width="700" alt="Black segmentation mask">
+</p>
 
-# 11. Obstacle Challenge
+Contour processing and obstacle detection evidence are shown below.
 
-Obstacle detection is given priority over normal wall following.
+<table>
+<tr>
+<td width="50%" align="center">
+<img src="v-photos/IMG_17_CONTOUR_DETECTION.jpg" width="450" alt="Contour detection">
+<br><b>Contour-processing output</b>
+</td>
+<td width="50%" align="center">
+<img src="v-photos/IMG_18_OBSTACLE_DETECTION.jpg" width="450" alt="Obstacle detection">
+<br><b>Obstacle-detection output</b>
+</td>
+</tr>
+</table>
 
-The documented priority is roughly:
-
-1. green obstacle;
-2. red obstacle;
-3. both useful boundaries;
-4. left boundary;
-5. right boundary;
-6. conservative fallback.
-
-The obstacle code also uses temporal confirmation so one bad camera frame does not immediately start an avoidance manoeuvre.
-
-The obstacle steering response depends on the direction of travel because the same image position can require a different correction in clockwise and anticlockwise runs.
-
-### Parking-marker transition
-
-The magenta/purple parking marker is used in the final obstacle sequence. The rear camera detects the marker, and the third relevant detection starts the transition toward parking.
-
-Parking is **implemented and tested**. It is not a planned/future feature in the Nationals version.
+The shared obstacle-processing implementation is contained in [`src/vision.py`](src/vision.py), while challenge behaviour is controlled by [`src/Current_Obstacle_8_21.py`](src/Current_Obstacle_8_21.py).
 
 ---
 
-# 12. Parking and MPU6050
+# Software Architecture
 
-Parking uses the **rear camera, a parking state machine and MPU6050 heading feedback**.
+The repository contains the executable Python programs and reusable hardware/software modules in [`src/`](src/).
 
-Timed turns alone were not reliable enough because the actual turn could change with battery state, wheel contact, friction, servo position and speed.
+| File | Function |
+|---|---|
+| [`Current_Open_8_22.py`](src/Current_Open_8_22.py) | Open Challenge program, direction selection, marker detection/counting, wall following, steering, speed control, and stopping. |
+| [`Current_Obstacle_8_21.py`](src/Current_Obstacle_8_21.py) | Obstacle Challenge program, colour-obstacle detection, direction-dependent avoidance, lap/parking transition, and completion behaviour. |
+| [`drive.py`](src/drive.py) | Raspberry Pi GPIO motor control, PWM, forward/reverse movement, servo steering, steering limits, stop, and cleanup. |
+| [`heading.py`](src/heading.py) | MPU6050 I2C communication, gyro-bias calibration, heading integration, and heading wrapping. |
+| [`vision.py`](src/vision.py) | Shared camera processing, colour masks, morphology, contour detection, confidence logic, and target selection. |
+| [`openVision.py`](src/openVision.py) | Open Challenge-specific vision processing. |
+| [`parking.py`](src/parking.py) | Rear-camera parking detection, wall following, and IMU-guided parking actions. |
 
-### MPU6050 calibration
+The GPIO implementation uses **`RPi.GPIO`**, as reflected by the source import:
 
-The documented calibration uses:
+```python
+import RPi.GPIO as GPIO
+```
 
-- an initial settling period;
-- **1500 stationary Z-axis gyro samples**;
-- average gyro bias calculation;
-- bias subtraction during operation;
-- heading integration and 0–360° wrapping.
+The MPU6050 communicates through **I2C**.
 
-The current source also stops safely if the IMU/I2C system fails and uses time limits on turning loops.
-
-### Parking status
-
-**Parking is working in the current tested configuration.**
-
-The six recorded Obstacle Challenge runs included the complete sequence with parking.
-
----
-
-# 13. Power Architecture
-
-The final robot uses a **3S 2200 mAh LiPo** with separate power branches.
-
-### Main battery branch
-
-The battery supplies the motor-driver motor voltage and the inputs to the buck converters.
-
-### Buck 1
-
-Provides the regulated 5 V branch used for the servo and motor-driver logic connections shown in the final schematic.
-
-### Buck 2
-
-Provides the regulated 5 V supply for the Raspberry Pi 5 and its connected peripherals.
-
-### Raspberry Pi 3.3 V
-
-The Pi provides the 3.3 V rail used by the documented low-voltage devices such as the MPU6050 and OLED.
-
-All parts share a common ground.
+The repository intentionally lists the actual source filenames rather than generic names such as `open_challenge.py` or `obstacle_challenge.py`. A reproducible configuration should always run and document the source files that actually exist in the final repository.
 
 ---
 
-# 14. Measured Power Results
-
-These are the voltage values we actually recorded in the final documentation:
-
-| Point | Condition | Measured |
-|---|---|---:|
-| LiPo battery | Before run | **11.1 V** |
-| LiPo battery | After multiple runs | **10.8 V** |
-| Buck 1 output | Motors OFF | **5.0 V** |
-| Buck 1 output | Robot moving | **5.0 V** |
-| Pi supply | Idle | **5.0 V** |
-| Pi supply | Moving | **5.0 V** |
-| Motor driver | Motors OFF | **11.1 V** |
-| Motor driver | Motors ON | **10.8 V** |
-
-**Current was not measured.** We did not have a proper current-logging setup, so no current number has been added.
-
-The voltage measurements show the values seen with the multimeter during the recorded tests. They do not measure short transient voltage drops or current spikes.
-
----
-
-# 15. Engineering Evolution
-
-Most of the final design came from problems we saw while testing.
-
-| Area | Problem | What we changed | Testing / result |
-|---|---|---|---|
-| Motor | Johnson 1000 RPM motor caused stalling/current and stability concerns | Changed to JGB37-520 12 V 600 RPM | Repeated drive and power testing; final motor selected |
-| Chassis | LEGO-heavy structure made rigid/custom mounting difficult | Added CAD/PLA structural parts while keeping LEGO drivetrain parts | Final chassis measured 24 × 13 × 27.5 cm and 863 g |
-| Camera | Early mount was unstable and placement affected vision | Redesigned mount in CAD and moved to two cameras | Better forward perception plus rear parking view |
-| Power | Pi should not supply the motor system | Separated motor and regulated logic/Pi branches | Recorded voltage measurements stayed at the documented values |
-| Navigation | One marker could be detected more than once | Rising-edge detection + 1.0 s cooldown | Final 3-lap / 12-crossing logic |
-| Obstacle avoidance | Colour/position mistakes could cause late steering | HSV + LAB + geometry scoring, contour filtering and temporal confirmation | Full obstacle sequence completed in recorded tests |
-| Parking | Timed turns did not give reliable orientation | Rear camera + parking states + MPU6050 heading | Parking worked in the complete recorded runs |
-
----
-
-# 16. Recorded Challenge Performance
+# WRO Challenges
 
 ## Open Challenge
 
-| Run | Time |
-|---:|---:|
-| 1 | 32 s |
-| 2 | 30 s |
-| 3 | 28 s |
-| 4 | 28 s |
-| 5 | 28 s |
-| 6 | 28 s |
+The Open Challenge software is implemented in:
 
-**Best: 28 s**
+[`src/Current_Open_8_22.py`](src/Current_Open_8_22.py)
+
+The program combines:
+
+- direction selection;
+- marker detection and counting;
+- cooldown and duplicate-detection control;
+- wall-following logic;
+- steering control;
+- speed control; and
+- challenge completion/stopping behaviour.
+
+The current source contains the final challenge parameters used for the repository baseline, including:
+
+- `TOTAL_LINES = 13`
+- `LINE_COOLDOWN = 1.2`
+- `START_SPEED = 40`
+- `TARGET_SPEED = 70`
+
+These values should not be replaced in documentation by older values unless the source itself is changed and the resulting configuration is retested.
+
+### Open Challenge evidence
+
+<p align="center">
+<img src="v-photos/IMG_26_OPEN_CHALLENGE_TEST.jpg" width="700" alt="Open Challenge test">
+</p>
+
+The repository also contains an Open Challenge video in [`testing/Open_Challenge.mp4`](testing/Open_Challenge.mp4) and additional video evidence in [`video/`](video/).
+
+---
 
 ## Obstacle Challenge
 
-| Run | Time |
-|---:|---:|
-| 1 | 1:10 |
-| 2 | 1:09 |
-| 3 | 1:11 |
-| 4 | 1:20 |
-| 5 | 1:15 |
-| 6 | 1:13 |
+The Obstacle Challenge software is implemented in:
 
-**Best: 1:09**
+[`src/Current_Obstacle_8_21.py`](src/Current_Obstacle_8_21.py)
 
-Obstacle placement was slightly different between runs, so these are kept exactly as recorded rather than trying to normalise the times.
+The challenge program combines colour-based obstacle perception with direction-dependent navigation and vehicle control. Supporting functions are provided by the shared vision, drive, and heading modules.
 
----
+<p align="center">
+<img src="v-photos/IMG_27_OBSTACLE_CHALLENGE_TEST.jpg" width="700" alt="Obstacle Challenge test">
+</p>
 
-# 17. Known Development History
+Individual challenge results and observations are stored in [`testing/test_results.csv`](testing/test_results.csv), with a readable summary in [`testing/test_summary.md`](testing/test_summary.md).
 
-There are older descriptions in earlier project files because the robot changed during development.
-
-Examples include:
-
-- earlier RWD descriptions;
-- earlier single-camera descriptions;
-- older steering values;
-- older wording saying parking was still planned;
-- earlier power tables with values that were not measured.
-
-Those are development-stage details. The Nationals version described in this repository is:
-
-**4WD + mechanical LEGO differential + central driveshaft + two cameras + MPU6050 + CAD/PLA chassis + JGB37-520 + TB6612FNG + 3S LiPo.**
+Measured processing observations are stored separately in [`testing/processing_observations.csv`](testing/processing_observations.csv). These observations should be interpreted according to the recorded robot configuration and test conditions rather than as a guarantee of an identical processing rate under every possible operating condition.
 
 ---
 
-# 18. Repository Structure
+# Parking Development
+
+Parking is an active engineering component of the robot and is represented by:
+
+- [`src/parking.py`](src/parking.py)
+- the rear-camera parking view;
+- IMU-guided parking actions; and
+- dedicated parking test evidence.
+
+<p align="center">
+<img src="v-photos/IMG_28_PARKING_TEST.jpg" width="700" alt="Parking test">
+</p>
+
+The parking subsystem is **not presented in this repository as a fully validated final challenge sequence**. Development and testing evidence are retained so that the current implementation, observations, and remaining work are traceable.
+
+Where challenge performance tables or videos exclude parking, they should be interpreted as measuring the completed sequence **up to the parking stage or parking approach**, rather than as proof of a complete run including parallel parking.
+
+This distinction is important for configuration honesty:
+
+> A working Open Challenge and a working obstacle-navigation sequence do not by themselves prove a fully completed Obstacle Challenge with parking.
+
+The current parking implementation and its development evidence remain available for inspection and further improvement.
+
+---
+
+# Power and Electronics
+
+The electrical system distributes power to the Raspberry Pi and logic electronics separately from the motor-control branch.
+
+<p align="center">
+<img src="v-photos/IMG_20_POWER_DISTRIBUTION.jpg" width="700" alt="Power distribution">
+</p>
+
+The electronics enclosure protects and organises the internal components.
+
+<table>
+<tr>
+<td width="50%" align="center">
+<img src="v-photos/IMG_21_CIRCUIT_BOX_OPEN.jpg" width="450" alt="Open circuit box">
+<br><b>Electronics enclosure — open</b>
+</td>
+<td width="50%" align="center">
+<img src="v-photos/IMG_22_CIRCUIT_BOX_CLOSED.jpg" width="450" alt="Closed circuit box">
+<br><b>Electronics enclosure — closed</b>
+</td>
+</tr>
+</table>
+
+The battery installation is shown below.
+
+<p align="center">
+<img src="v-photos/IMG_23_BATTERY_SETUP.jpg" width="650" alt="Battery setup">
+</p>
+
+The final electrical schematic is the primary visual reference for power distribution and signal connections:
+
+<p align="center">
+<a href="schemes/schematic.jpg">
+<img src="schemes/schematic.jpg" width="800" alt="Electrical schematic">
+</a>
+</p>
+
+For detailed electrical reproduction, use:
+
+- [`schemes/schematic.jpg`](schemes/schematic.jpg)
+- [`guide/WIRING_AND_PIN_REFERENCE.md`](guide/WIRING_AND_PIN_REFERENCE.md)
+- [`guide/POWER_AND_SENSOR_EVIDENCE.md`](guide/POWER_AND_SENSOR_EVIDENCE.md)
+- [`testing/power_measurements.csv`](testing/power_measurements.csv)
+
+Measured voltages and any current values that were not directly measured are explicitly distinguished in the power evidence rather than being presented as equivalent measurements.
+
+---
+
+# Testing and Validation
+
+Testing evidence is stored in [`testing/`](testing/).
+
+The validation workflow is:
+
+```text
+Problem
+    ↓
+Hypothesis
+    ↓
+Engineering change
+    ↓
+Test
+    ↓
+Measured result
+    ↓
+Decision
+```
+
+## Test records
+
+| File | Evidence |
+|---|---|
+| [`test_results.csv`](testing/test_results.csv) | Individual Open Challenge and Obstacle Challenge runs, times, and observations. |
+| [`test_summary.md`](testing/test_summary.md) | Human-readable summary of challenge results and processing observations. |
+| [`engineering_evolution.md`](testing/engineering_evolution.md) | Problems encountered, engineering changes, tests, and resulting decisions. |
+| [`power_measurements.csv`](testing/power_measurements.csv) | Measured voltage data and explicit identification of current values that were not directly measured. |
+| [`processing_observations.csv`](testing/processing_observations.csv) | Camera FPS, processing loop rate, capture latency, and processing latency observations. |
+| [`Open_Challenge.mp4`](testing/Open_Challenge.mp4) | Open Challenge test video stored with testing evidence. |
+
+## Interpreting results correctly
+
+A result is meaningful only within its recorded configuration and conditions. Battery condition, robot configuration, software version, challenge direction, obstacle placement, and test procedure can affect results.
+
+Therefore:
+
+- measurements from different hardware configurations are not automatically treated as identical trials;
+- different obstacle placements are not treated as identical challenge conditions;
+- configured target rates are not treated as identical to measured end-to-end rates;
+- unmeasured current estimates are not presented as direct measurements; and
+- performance evidence that excludes parking is not presented as proof of a complete parked sequence.
+
+This distinction is part of the repository's reproducibility standard.
+
+---
+
+# Engineering Evolution
+
+The robot developed through multiple iterations of mechanical, electrical, perception, and software design.
+
+The visual progression is documented from the earlier development platforms to the final robot:
+
+<p align="center">
+<img src="v-photos/IMG_01_V1_LEGO_ROBOT.jpg" width="30%" alt="Version 1">
+<img src="v-photos/IMG_02_V2_HYBRID_ROBOT.JPG" width="30%" alt="Version 2">
+<img src="v-photos/IMG_03_FINAL_ROBOT_FRONT.jpg" width="30%" alt="Final robot">
+</p>
+
+The complete engineering record is maintained in [`testing/engineering_evolution.md`](testing/engineering_evolution.md).
+
+This file should be used to trace the important design changes, including mechanical redesign, camera changes, power architecture, steering calibration, vision development, and parking development.
+
+---
+
+# Quick Start
+
+> The exact Raspberry Pi OS version should be confirmed from the final physical robot before a clean reproduction is declared complete.
+
+## 1. Start with the repository guide
+
+Read:
+
+[`guide/START_HERE.md`](guide/START_HERE.md)
+
+This provides the recommended reading order and repository map.
+
+## 2. Obtain the required components
+
+Use:
+
+[`guide/PARTS_AND_PURCHASE_LINKS.md`](guide/PARTS_AND_PURCHASE_LINKS.md)
+
+and verify the final component list against:
+
+[`guide/PARTS_CHECKLIST.md`](guide/PARTS_CHECKLIST.md)
+
+If one file is explicitly designated as the authoritative final list in the repository, that designation should take precedence.
+
+## 3. Build the mechanical platform
+
+Follow:
+
+[`guide/BUILD_FROM_ZERO.md`](guide/BUILD_FROM_ZERO.md)
+
+Download the manufactured part files from:
+
+[`models/`](models/)
+
+Use the documented printing settings in:
+
+[`guide/3D_PRINTING_SETTINGS.md`](guide/3D_PRINTING_SETTINGS.md)
+
+## 4. Complete the electrical system
+
+Use:
+
+- [`schemes/schematic.jpg`](schemes/schematic.jpg)
+- [`guide/WIRING_AND_PIN_REFERENCE.md`](guide/WIRING_AND_PIN_REFERENCE.md)
+
+The schematic and pin reference should be checked together rather than treating one image as a complete substitute for the detailed wiring guide.
+
+## 5. Prepare the Raspberry Pi
+
+The source uses:
+
+- Raspberry Pi 5;
+- Raspberry Pi Camera Module 3 cameras;
+- Python;
+- OpenCV;
+- NumPy;
+- Picamera2;
+- `RPi.GPIO`;
+- `smbus2`; and
+- I2C communication with the MPU6050.
+
+The complete setup procedure belongs in:
+
+[`guide/SOFTWARE_SETUP.md`](guide/SOFTWARE_SETUP.md)
+
+To enable I2C on a fresh Raspberry Pi OS installation:
+
+```bash
+sudo raspi-config
+```
+
+Then select:
+
+```text
+Interface Options → I2C → Enable
+```
+
+Reboot after enabling the interface.
+
+The exact Raspberry Pi OS release used for the final configuration can be checked with:
+
+```bash
+cat /etc/os-release
+```
+
+That version should be copied into the software setup documentation only after it is verified on the physical robot.
+
+## 6. Calibrate and test
+
+Before a challenge run:
+
+1. verify both camera connections;
+2. verify I2C communication with the MPU6050;
+3. calibrate steering;
+4. calibrate the gyro bias and heading behaviour;
+5. verify colour-detection thresholds;
+6. perform a stationary motor and steering test;
+7. perform an Open Challenge test;
+8. perform an Obstacle Challenge test; and
+9. compare observations with the records in [`testing/`](testing/).
+
+---
+
+# Repository Structure
 
 ```text
 Team-Current-WRO-FE-2026/
-│
 ├── README.md
 ├── CHANGELOG.md
+├── .gitattributes
+├── .gitignore
 │
 ├── guide/
-│   ├── START_HERE.md
+│   ├── 3D_PRINTING_SETTINGS.md
 │   ├── BUILD_FROM_ZERO.md
+│   ├── PARTS_AND_PURCHASE_LINKS.md
 │   ├── PARTS_CHECKLIST.md
-│   ├── WIRING_AND_PIN_REFERENCE.md
-│   ├── SOFTWARE_SETUP.md
 │   ├── POWER_AND_SENSOR_EVIDENCE.md
-│   └── REPRODUCIBILITY.md
+│   ├── REPRODUCIBILITY_AND_RELEASE_EVIDENCE.md
+│   ├── SOFTWARE_SETUP.md
+│   ├── START_HERE.md
+│   └── WIRING_AND_PIN_REFERENCE.md
 │
 ├── models/
-│   ├── CAD preview images
-│   └── final STL exports
-│
 ├── schemes/
-│   └── schematic.png
-│
 ├── src/
-│   ├── Current_Open_8_22.py
-│   ├── Current_Obstacle_8_21.py
-│   ├── drive.py
-│   ├── heaeding.py
-│   ├── openVision.py
-│   ├── parking.py
-│   └── vision.py
-│
 ├── testing/
-│   ├── Open_Challenge.mp4
-│   ├── engineering_evolution.md
-│   ├── power_measurements.csv
-│   ├── processing_observations.csv
-│   ├── test_results.csv
-│   └── test_summary.md
-│
 ├── t-photos/
 ├── v-photos/
 └── video/
 ```
 
-The repository is separated by function so a judge can move from **how to build the robot**, to **how it is wired**, to **how the software runs**, to **the evidence from testing**, and finally to the **actual source and CAD files**.
+## Judge reading path
 
-The source filenames above match the current `src/` directory. The testing files listed above are the files used as evidence for the documented results.
+The recommended path through the repository is:
+
+```text
+README.md
+→ guide/START_HERE.md
+→ guide/BUILD_FROM_ZERO.md
+→ guide/PARTS_AND_PURCHASE_LINKS.md
+→ guide/WIRING_AND_PIN_REFERENCE.md
+→ guide/SOFTWARE_SETUP.md
+→ src/
+→ models/
+→ schemes/schematic.jpg
+→ v-photos/
+→ testing/
+→ video/
+→ CHANGELOG.md
+```
 
 ---
 
-# 19. Reproducibility
+# Detailed Repository Map
 
-The repository is organized so another team, mentor or judge can trace the final Nationals configuration from the physical build to the software and the test evidence.
+## `guide/`
 
-## 19.1 Build path
-
-**Step 1 — Parts**
-
-Use [`PARTS_CHECKLIST.md`](./guide/PARTS_CHECKLIST.md) to identify the documented components.
-
-**Step 2 — Mechanical build**
-
-Use [`BUILD_FROM_ZERO.md`](./guide/BUILD_FROM_ZERO.md) together with the CAD/STL files in [`models/`](./models/).
-
-**Step 3 — Wiring**
-
-Use [`WIRING_AND_PIN_REFERENCE.md`](./guide/WIRING_AND_PIN_REFERENCE.md) and the final [schematic](./schemes/schematic.jpg).
-
-**Step 4 — Software**
-
-Use [`SOFTWARE_SETUP.md`](./guide/SOFTWARE_SETUP.md), then use the programs and modules in [`src/`](./src/).
-
-**Step 5 — Calibration**
-
-Verify camera placement, steering centre/range, vision thresholds and MPU6050 calibration before challenge testing.
-
-**Step 6 — Validation**
-
-Use the files in [`testing/`](./testing/) to compare the rebuilt robot with the recorded Nationals configuration.
-
-## 19.2 Source-to-function map
-
-| Source file | Purpose |
+| File | Purpose |
 |---|---|
-| [`Current_Open_8_22.py`](./src/Current_Open_8_22.py) | Open Challenge program |
-| [`Current_Obstacle_8_21.py`](./src/Current_Obstacle_8_21.py) | Obstacle Challenge program |
-| [`drive.py`](./src/drive.py) | Motor and steering control |
-| [`vision.py`](./src/vision.py) | Main vision processing |
-| [`openVision.py`](./src/openVision.py) | Open Challenge vision processing |
-| [`parking.py`](./src/parking.py) | Parking logic |
-| [`heaeding.py`](./src/heaeding.py) | MPU6050 heading and calibration |
+| [`START_HERE.md`](guide/START_HERE.md) | Recommended reading order and repository map. |
+| [`BUILD_FROM_ZERO.md`](guide/BUILD_FROM_ZERO.md) | Robot assembly from the parts through testing priorities. |
+| [`PARTS_AND_PURCHASE_LINKS.md`](guide/PARTS_AND_PURCHASE_LINKS.md) | Required components and purchase references. |
+| [`PARTS_CHECKLIST.md`](guide/PARTS_CHECKLIST.md) | Component checklist. |
+| [`WIRING_AND_PIN_REFERENCE.md`](guide/WIRING_AND_PIN_REFERENCE.md) | Power architecture, GPIO assignments, motor-driver connections, servo connection, I2C devices, cameras, steering values, and measured voltages. |
+| [`SOFTWARE_SETUP.md`](guide/SOFTWARE_SETUP.md) | Raspberry Pi setup, dependencies, cameras, I2C, source map, calibration, run order, and safety instructions. |
+| [`POWER_AND_SENSOR_EVIDENCE.md`](guide/POWER_AND_SENSOR_EVIDENCE.md) | Power branches, voltage evidence, current limitations, sensor selection, calibration, and interference considerations. |
+| [`3D_PRINTING_SETTINGS.md`](guide/3D_PRINTING_SETTINGS.md) | Manufacturing settings for custom printed components. |
+| [`REPRODUCIBILITY_AND_RELEASE_EVIDENCE.md`](guide/REPRODUCIBILITY_AND_RELEASE_EVIDENCE.md) | Configuration baseline, clean-build workflow, evidence mapping, and release discipline. |
 
-## 19.3 Testing workflow
+## `models/`
 
-Every important engineering change is evaluated using the same basic cycle:
+| STL file | Purpose |
+|---|---|
+| [`chassis.stl`](models/chassis.stl) | Main custom printed chassis. |
+| [`chassis pt2.stl`](models/chassis%20pt2.stl) | Additional chassis component. |
+| [`dual_camera_mount.stl`](models/dual_camera_mount.stl) | Dual-camera mounting structure. |
+| [`camera case.stl`](models/camera%20case.stl) | Camera enclosure. |
+| [`Circuit_Box.stl`](models/Circuit_Box.stl) | Electronics enclosure. |
+| [`Circuit_Box_LID.stl`](models/Circuit_Box_LID.stl) | Electronics-enclosure lid. |
+| [`36t gear.stl`](models/36t%20gear.stl) | Custom 36-tooth drive gear. |
 
-**Problem → hypothesis → change → test → measured result → decision**
+## `schemes/`
 
-Examples documented in this repository include:
+| File | Purpose |
+|---|---|
+| [`schematic.jpg`](schemes/schematic.jpg) | Final electrical schematic and primary visual reference for power and signal connections. |
 
-- motor/chassis changes after early drivetrain testing;
-- camera-placement changes after perception testing;
-- marker-counting changes after repeated detections;
-- IMU-based parking control after timed turns proved less reliable;
-- vision threshold changes after field testing.
+## `src/`
 
-The supporting records are kept in:
+The executable source code is described in the [Software Architecture](#software-architecture) section above.
 
-- [`engineering_evolution.md`](./testing/engineering_evolution.md)
-- [`test_results.csv`](./testing/test_results.csv)
-- [`processing_observations.csv`](./testing/processing_observations.csv)
-- [`test_summary.md`](./testing/test_summary.md)
-- [`power_measurements.csv`](./testing/power_measurements.csv)
+## `testing/`
 
-## 19.4 Configuration traceability
+The testing records are described in the [Testing and Validation](#testing-and-validation) section above.
 
-The documented final configuration is kept consistent across:
+## `t-photos/`
 
-- this README;
-- the build and wiring guides;
-- the source code;
-- CAD/STL files;
-- the schematic;
-- testing records;
-- [`CHANGELOG.md`](./CHANGELOG.md).
+Contains team and individual photographs used in the [Team](#the-team) section.
 
-If a competition configuration changes, the corresponding source, guide and changelog entry should be updated together.
+## `v-photos/`
 
-## 19.5 Versioning
+Contains CAD previews, robot photographs, mechanical evidence, camera/perception evidence, power/electronics evidence, and challenge-testing photographs.
 
-The repository uses a Nationals configuration baseline and keeps a changelog at [`CHANGELOG.md`](./CHANGELOG.md).
+## `video/`
 
-For future engineering changes, commit messages should describe the actual change, for example:
+Contains additional local challenge video evidence and [`yt_video_link.md`](video/yt_video_link.md), which identifies the external YouTube video evidence.
+
+---
+
+# Reproducibility
+
+The repository is intended to allow another team or reviewer to trace the final robot from design through validation.
+
+A reproducible reconstruction should be able to follow:
 
 ```text
-vision: improve obstacle confidence
-parking: calibrate IMU turn
-drive: update steering limits
+Parts
+  ↓
+CAD/STL manufacturing
+  ↓
+Mechanical assembly
+  ↓
+Electrical schematic and pin wiring
+  ↓
+Raspberry Pi and software setup
+  ↓
+Sensor and steering calibration
+  ↓
+Source-code execution
+  ↓
+Challenge testing
+  ↓
+Comparison with recorded evidence
+```
+
+The detailed reproducibility procedure is maintained in:
+
+[`guide/REPRODUCIBILITY_AND_RELEASE_EVIDENCE.md`](guide/REPRODUCIBILITY_AND_RELEASE_EVIDENCE.md)
+
+The most important reproducibility principle is:
+
+> **The README, engineering journal, guide files, source code, CAD/STL files, schematic, testing records, and changelog must describe the same final robot configuration. If a parameter or hardware component changes during development, the corresponding source, test record, and documentation are updated together before the configuration is called final.**
+
+The repository therefore treats documentation as part of the engineering configuration rather than as a separate description written after development.
+
+---
+
+# Failure Modes and Mitigation
+
+| Failure mode | Mitigation or engineering response |
+|---|---|
+| IMU or I2C communication failure | Stop or prevent an uncontrolled manoeuvre according to the implemented safety behaviour. |
+| Duplicate marker detection | Use rising-edge detection and a cooldown period. |
+| Camera exposure variation | Use the documented exposure and camera configuration procedures. |
+| False colour detection | Use colour masks, morphology, contour filtering, geometry/confidence logic, and challenge-specific validation. |
+| Motor stall or excessive current | Use the documented motor/power configuration and distinguish measured electrical values from estimates. |
+| Excessive speed or wheel lift | Tune operating speed for stability rather than relying on theoretical maximum motor RPM. |
+| Wall collision | Record the remaining risk and refine direction-dependent navigation and steering behaviour. |
+| Low battery condition | Verify battery condition and documented voltage thresholds before testing. |
+| Parking instability | Treat parking as a separate development limitation until the complete sequence is validated. |
+
+Failure handling and engineering limitations should remain consistent across the source code, test records, README, and engineering journal.
+
+---
+
+# Evidence Index
+
+## Final robot and development
+
+- [`IMG_01_V1_LEGO_ROBOT.jpg`](v-photos/IMG_01_V1_LEGO_ROBOT.jpg)
+- [`IMG_02_V2_HYBRID_ROBOT.JPG`](v-photos/IMG_02_V2_HYBRID_ROBOT.JPG)
+- [`IMG_03_FINAL_ROBOT_FRONT.jpg`](v-photos/IMG_03_FINAL_ROBOT_FRONT.jpg)
+- [`IMG_04_FINAL_ROBOT_REAR.jpg`](v-photos/IMG_04_FINAL_ROBOT_REAR.jpg)
+- [`IMG_05_FINAL_ROBOT_TOP.jpg`](v-photos/IMG_05_FINAL_ROBOT_TOP.jpg)
+- [`SIDE_PROFILE_1.png`](v-photos/SIDE_PROFILE_1.png)
+- [`SIDE_PROFILE_2.png`](v-photos/SIDE_PROFILE_2.png)
+
+## Mechanical evidence
+
+- [`IMG_06_MECHANICAL_DIFFERENTIAL.jpg`](v-photos/IMG_06_MECHANICAL_DIFFERENTIAL.jpg)
+- [`IMG_07_DIFFERENTIAL_POWERTRAIN.jpg`](v-photos/IMG_07_DIFFERENTIAL_POWERTRAIN.jpg)
+- [`IMG_08_STEERING_MECHANISM.jpg`](v-photos/IMG_08_STEERING_MECHANISM.jpg)
+- [`IMG_09_MOTOR_MOUNT.jpg`](v-photos/IMG_09_MOTOR_MOUNT.jpg)
+
+## Camera and perception evidence
+
+- [`IMG_10_CAMERA_CONFIGURATION.jpg`](v-photos/IMG_10_CAMERA_CONFIGURATION.jpg)
+- [`IMG_11_CAMERA_MOUNT_ADJUSTMENT.jpg`](v-photos/IMG_11_CAMERA_MOUNT_ADJUSTMENT.jpg)
+- [`IMG_12_CAMERA_VIEW_FORWARD.jpg`](v-photos/IMG_12_CAMERA_VIEW_FORWARD.jpg)
+- [`IMG_13_CAMERA_VIEW_OBSTACLE.jpg`](v-photos/IMG_13_CAMERA_VIEW_OBSTACLE.jpg)
+- [`IMG_14_CAMERA_VIEW_PARKING.jpg`](v-photos/IMG_14_CAMERA_VIEW_PARKING.jpg)
+- [`IMG_15_BLACK_MASK.jpg`](v-photos/IMG_15_BLACK_MASK.jpg)
+- [`IMG_17_CONTOUR_DETECTION.jpg`](v-photos/IMG_17_CONTOUR_DETECTION.jpg)
+- [`IMG_18_OBSTACLE_DETECTION.jpg`](v-photos/IMG_18_OBSTACLE_DETECTION.jpg)
+
+## Power and electronics evidence
+
+- [`IMG_20_POWER_DISTRIBUTION.jpg`](v-photos/IMG_20_POWER_DISTRIBUTION.jpg)
+- [`IMG_21_CIRCUIT_BOX_OPEN.jpg`](v-photos/IMG_21_CIRCUIT_BOX_OPEN.jpg)
+- [`IMG_22_CIRCUIT_BOX_CLOSED.jpg`](v-photos/IMG_22_CIRCUIT_BOX_CLOSED.jpg)
+- [`IMG_23_BATTERY_SETUP.jpg`](v-photos/IMG_23_BATTERY_SETUP.jpg)
+
+## Challenge and parking evidence
+
+- [`IMG_26_OPEN_CHALLENGE_TEST.jpg`](v-photos/IMG_26_OPEN_CHALLENGE_TEST.jpg)
+- [`IMG_27_OBSTACLE_CHALLENGE_TEST.jpg`](v-photos/IMG_27_OBSTACLE_CHALLENGE_TEST.jpg)
+- [`IMG_28_PARKING_TEST.jpg`](v-photos/IMG_28_PARKING_TEST.jpg)
+
+## Team evidence
+
+- [`Darsh_Individual.png`](t-photos/Darsh_Individual.png)
+- [`Ehan_Individual.png`](t-photos/Ehan_Individual.png)
+- [`Team.png`](t-photos/Team.png)
+- [`sunil_sir.jpg`](t-photos/sunil_sir.jpg)
+- [`shyam_sir.jpg`](t-photos/shyam_sir.jpg)
+
+---
+
+# Configuration Consistency
+
+Before a configuration is described as final, verify:
+
+| Check | Required result |
+|---|---|
+| README links | Every link opens an existing file or directory. |
+| Image paths | Capitalisation and extensions match the repository exactly. |
+| Source map | Every listed Python file exists and has the described purpose. |
+| Guide map | Every guide link uses the actual current filename. |
+| Schematic | Uses [`schemes/schematic.jpg`](schemes/schematic.jpg). |
+| Software values | README values match the actual final source code. |
+| Test values | Documentation matches the CSV records and labels the relevant conditions. |
+| Camera configuration | Resolution and target/observed performance are not confused. |
+| Parking status | Remaining limitations are stated consistently across all evidence. |
+| Electrical evidence | Measured values and estimates are explicitly distinguished. |
+| Final baseline | A specific final commit or tag identifies the Nationals configuration. |
+
+Generated Python files such as `__pycache__/` and `*.pyc` should remain excluded through `.gitignore` and should not be treated as final reproducibility evidence.
+
+---
+
+# Version and Release
+
+This README describes the repository structure and robot configuration represented by the project baseline.
+
+The repository development history is recorded in:
+
+[`CHANGELOG.md`](CHANGELOG.md)
+
+The final Nationals configuration should be frozen at one identifiable Git commit or tag before submission. That release identity should be recorded consistently in:
+
+- the GitHub repository;
+- the changelog;
+- the reproducibility/release guide; and
+- any final engineering documentation that identifies a fixed configuration.
+
+Meaningful commits make the engineering history easier to trace. Examples include:
+
+```text
 mechanical: revise camera mount
+vision: improve obstacle confidence
+drive: update steering limits
 testing: record obstacle challenge runs
 docs: update Nationals configuration
 ```
 
-This makes the engineering history easier to follow than generic file-upload messages.
-
-## 19.6 Honest measurement policy
-
-Measured values are labelled as measured.
-
-Where a quantity has not been directly measured, the repository says **not measured** rather than presenting a manufacturer rating or an estimate as a robot test result.
-
-This is particularly important for the current/power dataset in [`power_measurements.csv`](./testing/power_measurements.csv).
+The repository should not rely on a moving `main` branch alone to identify a final competition configuration once submission evidence is frozen.
 
 ---
 
-# 20. Evidence Included in This Repository
+# Repository Navigation
 
-The repository currently contains:
+**Start here:**
 
-- engineering documentation and index;
-- final Python source;
-- final STL exports supplied by us in `models/`;
-- CAD preview images;
-- schematic preview;
-- robot photographs;
-- Open Challenge test video;
-- recorded challenge results;
-- measured power-voltage results;
-- engineering evolution notes.
+➡️ [`guide/START_HERE.md`](guide/START_HERE.md)
 
-The native CAD and schematic source files should only be added if we actually have the editable files. We have not made replacement source files from screenshots or STL exports.
+Then follow:
 
----
-
-# 21. Final Nationals Configuration Verification
-
-Before using this as the Nationals version, we checked the main robot details against the final engineering document and the current code.
-
-| Item | Final version |
-|---|---|
-| Drivetrain | **4WD** |
-| Differential | **Mechanical LEGO differential + central driveshaft** |
-| Cameras | **2 × Raspberry Pi Camera Module 3** |
-| Orientation | **MPU6050** |
-| Steering | **35° min / 75° centre / 115° max** |
-| Open Challenge | **3 laps / 4 relevant crossings per lap / 12 total** |
-| Marker cooldown | **1.0 s** |
-| Direction markers | **Blue = anticlockwise / Orange = clockwise** |
-| Obstacle parking marker | **Magenta / purple** |
-| Parking | **Implemented and tested** |
-| Open Challenge best | **28 s** |
-| Obstacle Challenge best | **1:09** |
-| Current measurement | **Not measured** |
-| Documentation index | **Included at `guide/`** |
-| Final STL exports | **Included in `models/`** |
-| Open Challenge video | **Included in `testing/`** |
-
-If we change the physical robot after this version, the code and documentation need to be changed as well. Otherwise, this is the configuration we are using as the Nationals baseline.
+**Build** → [`guide/BUILD_FROM_ZERO.md`](guide/BUILD_FROM_ZERO.md)  
+**Parts** → [`guide/PARTS_AND_PURCHASE_LINKS.md`](guide/PARTS_AND_PURCHASE_LINKS.md)  
+**Wiring** → [`guide/WIRING_AND_PIN_REFERENCE.md`](guide/WIRING_AND_PIN_REFERENCE.md)  
+**Software** → [`guide/SOFTWARE_SETUP.md`](guide/SOFTWARE_SETUP.md)  
+**Source code** → [`src/`](src/)  
+**CAD/STL files** → [`models/`](models/)  
+**Electrical schematic** → [`schemes/schematic.jpg`](schemes/schematic.jpg)  
+**Robot evidence** → [`v-photos/`](v-photos/)  
+**Testing evidence** → [`testing/`](testing/)  
+**Video evidence** → [`video/`](video/)  
+**Development history** → [`CHANGELOG.md`](CHANGELOG.md)
 
 ---
 
-# 22. Version
-
-**v1.0 — Nationals Configuration**
+<p align="center">
+  <b>Team Current</b><br>
+  <i>The Dark Knight — WRO Future Engineers 2026</i>
+</p>
