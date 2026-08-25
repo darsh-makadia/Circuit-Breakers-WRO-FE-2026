@@ -1,105 +1,91 @@
-# Software Setup — Raspberry Pi 5
+# Software Setup
 
-This guide points only to software paths that exist in the current repository.
+Instructions for setting up a fresh Raspberry Pi 5 to run The Dark Knight's software.
 
-## 1. Install Raspberry Pi OS
+## 1. Operating System
 
-Use a Raspberry Pi OS installation appropriate for Raspberry Pi 5.
+Run this on the Pi to confirm the exact OS version, then fill it in below:
 
-Enable the required interfaces, especially:
+```bash
+cat /etc/os-release
+```
 
-- I2C
-- camera support
+**OS:** Debian GNU/Linux 13 (trixie), confirmed via `cat /etc/os-release` on the actual robot's Raspberry Pi 5.
 
-## 2. Clone the repository
+*(Note: this reports as Debian 13/trixie, not "Raspberry Pi OS" by name in `PRETTY_NAME` — if reproducing this setup, flash whichever image was actually used rather than assuming a specific Raspberry Pi OS release, since Raspberry Pi OS naming/versioning can differ from the underlying Debian base shown here.)*
+
+## 2. Enable I2C
+
+I2C is disabled by default on a fresh Raspberry Pi OS install and is required for the MPU6050 IMU and the OLED display.
+
+```bash
+sudo raspi-config
+```
+
+Navigate to: **Interface Options → I2C → Enable**, then reboot:
+
+```bash
+sudo reboot
+```
+
+Confirm I2C devices are detected:
+
+```bash
+sudo apt install -y i2c-tools
+i2cdetect -y 1
+```
+
+You should see the MPU6050 (typically address `0x68`) and the OLED (typically `0x3C`) listed.
+
+## 3. Enable the Camera Interface
+
+Both Raspberry Pi Camera Module 3 units connect via the CSI ribbon interface and require Picamera2.
+
+```bash
+sudo raspi-config
+```
+
+Navigate to: **Interface Options → Camera → Enable**, then reboot.
+
+## 4. Install Python Dependencies
+
+```bash
+sudo apt update
+sudo apt install -y python3-pip python3-opencv python3-picamera2
+
+pip3 install --break-system-packages \
+    numpy \
+    smbus2 \
+    RPi.GPIO
+```
+
+| Library | Purpose |
+|---|---|
+| `opencv-python` (via `python3-opencv`) | Colour segmentation, contour detection, all computer vision |
+| `numpy` | Array/matrix operations used throughout the vision pipeline |
+| `picamera2` | Camera capture (front + back cameras) |
+| `smbus2` | I2C communication with the MPU6050 IMU |
+| `RPi.GPIO` | Direct GPIO control — motor and steering pin control in `drive.py`, push-button input |
+
+## 5. Clone the Repository
 
 ```bash
 git clone https://github.com/darsh-makadia/Team-Current-WRO-FE-2026.git
-cd Team-Current-WRO-FE-2026
+cd Team-Current-WRO-FE-2026/src
 ```
 
-## 3. Python software
+## 6. Run
 
-The repository's Python source is in [`../src/`](../src/).
+```bash
+python3 Current_Open_8_22.py       # Open Challenge
+python3 Current_Obstacle_8_21.py   # Obstacle Challenge
+```
 
-The documented software stack includes:
+## Troubleshooting
 
-- Python
-- OpenCV
-- NumPy
-- RPi.GPIO
-- Picamera2
-- smbus2
-
-### Important repository note
-
-There is currently no `requirements.txt` in the repository, so this guide does **not** give a fake `pip install -r requirements.txt` command.
-
-Install the libraries required by the actual source/environment, then verify imports on the Raspberry Pi.
-
-## 4. Main source files
-
-| Function | Actual file |
+| Symptom | Likely cause |
 |---|---|
-| Drive and steering | [`src/drive.py`](../src/drive.py) |
-| Heading / MPU6050 | [`src/heaeding.py`](../src/heaeding.py) |
-| Open challenge | [`src/Current_Open_8_22.py`](../src/Current_Open_8_22.py) |
-| Obstacle challenge | [`src/Current_Obstacle_8_21.py`](../src/Current_Obstacle_8_21.py) |
-| Open challenge module | [`src/open_challenge.py`](../src/open_challenge.py) |
-| Obstacle challenge module | [`src/obstacle_challenge.py`](../src/obstacle_challenge.py) |
-| Vision | [`src/vision.py`](../src/vision.py) |
-| Open vision | [`src/openVision.py`](../src/openVision.py) |
-| Parking | [`src/parking.py`](../src/parking.py) |
-
-## 5. Verified drive configuration
-
-The actual `src/drive.py` defines:
-
-```text
-PWM_PIN = 13
-IN1_PIN = 5
-IN2_PIN = 6
-SERVO_PIN = 22
-
-CENTER = 75
-LEFT = 35
-RIGHT = 105
-```
-
-## 6. MPU6050 configuration
-
-The actual heading source uses:
-
-```text
-I2C bus = 1
-Address = 0x68
-Calibration samples = 1500
-```
-
-Keep the robot stationary during calibration.
-
-## 7. Test order
-
-Do not begin with a full autonomous run.
-
-Recommended order:
-
-1. Import/compile check
-2. Camera detection
-3. IMU detection
-4. Steering test
-5. Motor test with wheels lifted
-6. Slow manual movement
-7. Open Challenge
-8. Obstacle Challenge
-9. Parking calibration
-
-## 8. Safety
-
-The source includes cleanup/stop behaviour and bounded handling in the documented navigation systems. Always test with the robot secured and the drive wheels lifted for the first motor test.
-
-## Source-of-truth rule
-
-If a guide and the actual source disagree, inspect the actual source file first.
-
-[Back to Start Here](./START_HERE.md)
+| `ModuleNotFoundError: No module named 'picamera2'` | Camera interface not enabled, or Picamera2 not installed — repeat steps 3–4 |
+| No I2C devices found in `i2cdetect` | I2C not enabled, or a wiring issue on the MPU6050/OLED — repeat step 2 and check physical connections |
+| Camera fails to start / "Camera not found" | Ribbon cable seated incorrectly, or camera not enabled in `raspi-config` |
+| Servo/motor doesn't respond | Check GPIO pin numbers in `drive.py` match physical wiring; confirm `RPi.GPIO` installed correctly |
