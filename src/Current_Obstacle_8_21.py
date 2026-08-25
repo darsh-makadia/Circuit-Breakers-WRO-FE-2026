@@ -13,7 +13,7 @@ last_heading_time = 0
 # ROBOT CONTROL SETTINGS
 # ============================================================
 COOLDOWN = 7
-total_lap = 1
+total_lap = 3
 lap_count = 0
 inside_park = True
 round_complete = False
